@@ -11,10 +11,10 @@ This is a list compiled for the current things that need fixing / doing. They're
 
 
 **Easy**
-- [ ] Fix UI inconsistencies accross pages
-  - [ ] Nav bar
-  - [ ] Footer
-- [ ] Make mentioned links point to correct pages
+- [x] Fix UI inconsistencies accross pages
+  - [x] Nav bar
+  - [x] Footer
+- [x] Make mentioned links point to correct pages
 - [ ] Remove occurences of made-up template things (e.g. sushi workshop, building location)
 - [ ] Fix contact information accross website (e.g., email, instagram)
 - [ ] Fix colours to match uOJSA Branding (see Google Drive > Communication > Branding)
@@ -48,6 +48,9 @@ Remember, if you feel like you can do something to improve it, just do it. Don't
 MOST IMPORTANT: *Commit frequently!!!!* This allows us to revert versions without removing too many new changes, and allows us to see new changes with more granularity. 
 
 ### Build and Run Locally
+
+> [!NOTE]
+> You do not need to install Tailwind via npm for the pages to work. The app uses a CDN script that loads Tailwind in the browser at runtime. You only need to install Tailwind locally if you want to build CSS ahead of production, use custom Tailwind config/plugins, or avoid relying on the CDN in production app.
 
 First, ensure you have node.js installed (see [installation](https://nodejs.org/en)). Node is the official JavaScript package manager and is needed to install Vite. Vite is the local development web server we will use, since it is quick and easy to setup.
 

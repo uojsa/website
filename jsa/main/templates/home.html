@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<header class="relative bg-slate-900 py-24 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-white uppercase bg-pink-600 rounded-full">Konnichiwa!</span>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Your Japanese Home <br/><span class="text-pink-500">Away From Home</span></h1>
+        <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-10">
+            The Japanese Student Association (JSA) promotes Japanese culture through community events, language exchange, and social gatherings.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#events" class="px-8 py-3 bg-pink-600 text-white font-bold rounded-xl hover:bg-pink-700 transition-all shadow-lg shadow-pink-900/20">View Upcoming Events</a>
+            <a href="#" class="px-8 py-3 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-all">Learn about JCG</a>
+        </div>
+    </div>
+</header>
+
+<section class="py-12 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-6">
+            <div class="text-pink-600 mb-4"><i class="fa-solid fa-torii-gate text-3xl"></i></div>
+            <h3 class="font-bold text-xl mb-2">Cultural Events</h3>
+            <p class="text-slate-600 text-sm text-pretty">Experience traditional festivals, food tastings, and workshops throughout the year.</p>
+        </div>
+        <div class="p-6">
+            <div class="text-pink-600 mb-4"><i class="fa-solid fa-comments text-3xl"></i></div>
+            <h3 class="font-bold text-xl mb-2">JCG Language Group</h3>
+            <p class="text-slate-600 text-sm text-pretty">Weekly conversation practice for all levels—from total beginners to native speakers.</p>
+        </div>
+        <div class="p-4">
+            <div class="text-pink-600 mb-4"><i class="fa-solid fa-user-group text-3xl"></i></div>
+            <h3 class="font-bold text-xl mb-2">Inclusive Community</h3>
+            <p class="text-slate-600 text-sm text-pretty">You don't have to be Japanese to join! Anyone interested in the culture is welcome.</p>
+        </div>
+    </div>
+</section>
+
+<section id="events" class="py-20 max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-end mb-12">
+        <div>
+            <h2 class="text-3xl font-bold mb-2 text-slate-900">Happening Soon</h2>
+            <p class="text-slate-500">Mark your calendars for our upcoming highlights.</p>
+        </div>
+        <a href="#" class="hidden sm:block text-pink-600 font-semibold hover:underline">Full Calendar &rarr;</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition-shadow group">
+            <div class="h-48 bg-slate-200 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1528164344705-4754268799af?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-4 left-4 bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Cultural</span>
+            </div>
+            <div class="p-6">
+                <div class="text-pink-600 font-bold text-sm mb-2 uppercase tracking-wide">March 28 • 6:00 PM</div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-pink-600 transition-colors">Spring Matsuri 2026</h3>
+                <p class="text-slate-600 text-sm mb-6 line-clamp-2">Join us for a night of traditional music, street food, and performances to celebrate the cherry blossom season.</p>
+                <div class="flex items-center text-slate-400 text-xs gap-4 border-t pt-4">
+                    <span><i class="fa-solid fa-location-dot mr-1"></i> UCU Terminus</span>
+                    <span><i class="fa-solid fa-ticket mr-1"></i> Free Entry</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition-shadow group">
+            <div class="h-48 bg-slate-200 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1545601445-4d6a0a0565f0?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">JCG</span>
+            </div>
+            <div class="p-6">
+                <div class="text-pink-600 font-bold text-sm mb-2 uppercase tracking-wide">Every Wed • 5:00 PM</div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-pink-600 transition-colors">Weekly Conversation Circle</h3>
+                <p class="text-slate-600 text-sm mb-6 line-clamp-2">Practice your Japanese speaking skills in a relaxed, no-pressure environment. All levels are welcome!</p>
+                <div class="flex items-center text-slate-400 text-xs gap-4 border-t pt-4">
+                    <span><i class="fa-solid fa-location-dot mr-1"></i> MHN 204</span>
+                    <span><i class="fa-solid fa-user-group mr-1"></i> No Registration</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition-shadow group">
+            <div class="h-48 bg-slate-200 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Workshop</span>
+            </div>
+            <div class="p-6">
+                <div class="text-pink-600 font-bold text-sm mb-2 uppercase tracking-wide">April 05 • 2:30 PM</div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-pink-600 transition-colors">Calligraphy Masterclass</h3>
+                <p class="text-slate-600 text-sm mb-6 line-clamp-2">Learn the art of Shodo (Japanese Calligraphy) with guest instructors. Supplies will be provided.</p>
+                <div class="flex items-center text-slate-400 text-xs gap-4 border-t pt-4">
+                    <span><i class="fa-solid fa-location-dot mr-1"></i> Arts Hall</span>
+                    <span><i class="fa-solid fa-ticket mr-1"></i> $5 Materials Fee</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-pink-600 py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Want to get involved?</h2>
+        <p class="text-pink-100 mb-8 max-w-xl mx-auto text-lg">Whether you want to lead as an executive or simply stay updated on our next sushi night, we'd love to have you.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#" class="bg-white text-pink-600 px-8 py-3 rounded-xl font-bold hover:bg-slate-100 transition shadow-lg">Apply for Exec Team</a>
+            <a href="#" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition">Join Discord</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

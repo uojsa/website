@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Japanese Conversation Group{% endblock %}
+
+{% block content %}
+<header class="bg-white border-b py-20">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+        <span class="text-blue-600 font-bold tracking-widest uppercase text-xs mb-4 block">Language Exchange</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Japanese <span class="text-pink-600">Conversation</span> Group</h1>
+        <p class="text-slate-500 text-lg leading-relaxed max-w-2xl mx-auto">
+            Whether you're a total beginner learning your first Hiragana or a native speaker looking for community, JCG is your weekly space to practice and connect.
+        </p>
+    </div>
+</header>
+
+<section class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        
+        <div class="lg:col-span-2 space-y-12">
+            <div>
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <i class="fa-solid fa-circle-question text-pink-600"></i> What happens at JCG?
+                </h2>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    JCG isn't a formal class—it's a relaxed hangout. We break into small groups based on skill level. Some days we play language games, other days we just chat about hobbies, anime, or life in Ottawa over snacks.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 bg-white rounded-xl border border-slate-200">
+                        <h4 class="font-bold mb-1">Beginner Friendly</h4>
+                        <p class="text-xs text-slate-500">Practice basic greetings and survival phrases.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl border border-slate-200">
+                        <h4 class="font-bold mb-1">Advanced Circles</h4>
+                        <p class="text-xs text-slate-500">Deep dives into culture and natural slang.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <i class="fa-solid fa-bell text-pink-600"></i> No Sign-ups Required
+                </h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Just show up! JCG is free for all uOttawa students. You don't need to be a JSA member to drop in and see what it's like.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-600/20 rounded-full blur-3xl"></div>
+            
+            <h3 class="text-pink-500 font-bold uppercase tracking-widest text-xs mb-2">Current Term</h3>
+            <h4 class="text-2xl font-bold mb-8">Winter 2026 Schedule</h4>
+            
+            <div class="space-y-6">
+                <div class="flex gap-4">
+                    <div class="text-pink-500 mt-1"><i class="fa-solid fa-calendar-day"></i></div>
+                    <div>
+                        <p class="font-bold">Every Wednesday</p>
+                        <p class="text-slate-400 text-sm">5:00 PM – 7:00 PM</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-pink-500 mt-1"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <p class="font-bold">Hamelin Hall (MHN)</p>
+                        <p class="text-slate-400 text-sm">Room 204</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-pink-500 mt-1"><i class="fa-solid fa-circle-info"></i></div>
+                    <div>
+                        <p class="font-bold">Note for this week</p>
+                        <p class="text-slate-400 text-sm italic">Meeting in the UCU Lounge instead!</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="w-full mt-10 bg-white text-slate-900 font-bold py-3 rounded-xl hover:bg-pink-100 hover:text-pink-600 transition">
+                Add to Google Calendar
+            </button>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

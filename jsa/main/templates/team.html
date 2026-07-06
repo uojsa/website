@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="py-20 max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+        <h1 class="text-4xl font-extrabold mb-4 text-slate-900">The Faces of <span class="text-pink-600">JSA</span></h1>
+        <p class="text-slate-500 max-w-xl mx-auto">Meet the 2025-2026 Executive Team working hard to bring Japanese culture to campus.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition text-center group">
+            <div class="w-32 h-32 bg-slate-100 rounded-full mx-auto mb-6 overflow-hidden border-4 border-white shadow-inner">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-bold text-lg group-hover:text-pink-600 transition">Sora Tanaka</h3>
+            <p class="text-pink-600 text-xs font-bold uppercase tracking-widest mb-4">President</p>
+            <p class="text-slate-500 text-sm italic">"Excited to share my culture with everyone at uOttawa!"</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition text-center group">
+            <div class="w-32 h-32 bg-slate-100 rounded-full mx-auto mb-6 overflow-hidden border-4 border-white shadow-inner">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Anya" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-bold text-lg group-hover:text-pink-600 transition">Emma Wilson</h3>
+            <p class="text-pink-600 text-xs font-bold uppercase tracking-widest mb-4">VP Events</p>
+            <p class="text-slate-500 text-sm italic">"Catch me planning our next big Matsuri celebration."</p>
+        </div>
+
+        </div>
+</section>
+
+<section class="bg-slate-900 py-20">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+            <div class="bg-pink-600 p-10 text-white md:w-2/5 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Join the <br>Team</h2>
+                    <p class="text-pink-100 text-sm leading-relaxed">
+                        We are always looking for passionate volunteers, photographers, and future executives. Tell us how you'd like to help!
+                    </p>
+                </div>
+                <div class="space-y-4 text-sm mt-8">
+                    <p><i class="fa-solid fa-check mr-2"></i> Gain leadership experience</p>
+                    <p><i class="fa-solid fa-check mr-2"></i> Help plan major festivals</p>
+                    <p><i class="fa-solid fa-check mr-2"></i> Make lifelong friends</p>
+                </div>
+            </div>
+
+            <form class="p-10 md:w-3/5 space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold uppercase text-slate-400">Full Name</label>
+                        <input type="text" class="w-full border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-600 outline-none transition" placeholder="Sora T.">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold uppercase text-slate-400">uOttawa Email</label>
+                        <input type="email" class="w-full border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-600 outline-none transition" placeholder="stana000@uottawa.ca">
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-bold uppercase text-slate-400">Interested In...</label>
+                    <select class="w-full border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-600 outline-none transition bg-white">
+                        <option>Event Volunteering</option>
+                        <option>Executive Role (Next Semester)</option>
+                        <option>Photography/Social Media</option>
+                        <option>General Interest</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-bold uppercase text-slate-400">Brief Message</label>
+                    <textarea class="w-full border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-600 outline-none transition h-24" placeholder="Tell us why you want to join!"></textarea>
+                </div>
+                <button class="w-full bg-pink-600 text-white font-bold py-4 rounded-xl hover:bg-pink-700 transition shadow-lg shadow-pink-200">Submit Application</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

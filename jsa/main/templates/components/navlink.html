@@ -1,0 +1,5 @@
+{% if page_name == current_page %}
+<a href="{{ href }}" class="text-pink-600 border-b-2 border-pink-600 pb-1">{{ label }}</a>
+{% else %}
+<a href="{{ href }}" class="hover:text-pink-600 transition">{{ label }}</a>
+{% endif %}

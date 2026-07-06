@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Cultural Archive{% endblock %}
+
+{% block content %}
+<header class="bg-slate-900 py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Our <span class="text-pink-500">Legacy</span></h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg">A look back at the cultural festivals, workshops, and community milestones that have shaped JSA uOttawa over the years.</p>
+    </div>
+</header>
+
+<section class="sticky top-16 z-40 bg-white border-b border-slate-200 py-4 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex gap-2">
+            <button class="px-4 py-2 bg-pink-600 text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-md">All Years</button>
+            <button class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-pink-100 hover:text-pink-600 transition rounded-full text-xs font-bold uppercase tracking-wider">2025</button>
+            <button class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-pink-100 hover:text-pink-600 transition rounded-full text-xs font-bold uppercase tracking-wider">2024</button>
+        </div>
+        <div class="text-slate-400 text-sm italic">Showing 12 past events</div>
+    </div>
+</section>
+
+<main class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        
+        <div class="group">
+            <div class="relative h-64 mb-4 overflow-hidden rounded-2xl shadow-lg">
+                <img src="https://images.unsplash.com/photo-1542359649-31e03cd4d909?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Cultural Festival">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <span class="text-white text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i> View 12 Photos</span>
+                </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-pink-600 font-bold text-xs uppercase tracking-widest">February 2025</span>
+                <span class="bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded">Festival</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-pink-600 transition-colors">Winter Bunkasai</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-4">Our annual winter culture festival featuring authentic takoyaki stalls, kimono trials, and a special performance by the local Taiko group.</p>
+            <div class="flex gap-4 items-center text-slate-400 text-xs">
+                <span><i class="fa-solid fa-users mr-1 text-pink-500"></i> 150+ Attendees</span>
+                <span><i class="fa-solid fa-handshake mr-1 text-pink-500"></i> Collab with CSSA</span>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="relative h-64 mb-4 overflow-hidden rounded-2xl shadow-lg">
+                <img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Sushi Workshop">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <span class="text-white text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i> View 8 Photos</span>
+                </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-pink-600 font-bold text-xs uppercase tracking-widest">November 2024</span>
+                <span class="bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded">Workshop</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-pink-600 transition-colors">Nigiri & Temaki Night</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-4">An interactive workshop where students learned the basics of sushi rice preparation and hand-rolling techniques from a local chef.</p>
+            <div class="flex gap-4 items-center text-slate-400 text-xs">
+                <span><i class="fa-solid fa-users mr-1 text-pink-500"></i> 40 Attendees</span>
+                <span><i class="fa-solid fa-location-dot mr-1 text-pink-500"></i> Tabaret Hall</span>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="relative h-64 mb-4 overflow-hidden rounded-2xl shadow-lg">
+                <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Career Panel">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <span class="text-white text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i> View 5 Photos</span>
+                </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-pink-600 font-bold text-xs uppercase tracking-widest">October 2024</span>
+                <span class="bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded">Social</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-pink-600 transition-colors">JET Programme Info Session</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-4">A collaboration with the Embassy of Japan to help students explore teaching opportunities and cultural exchange roles in Japan after graduation.</p>
+            <div class="flex gap-4 items-center text-slate-400 text-xs">
+                <span><i class="fa-solid fa-users mr-1 text-pink-500"></i> 60 Attendees</span>
+                <span><i class="fa-solid fa-building-columns mr-1 text-pink-500"></i> Embassy Partnership</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-20 text-center">
+        <button class="px-10 py-4 border-2 border-slate-200 text-slate-600 font-bold rounded-2xl hover:border-pink-600 hover:text-pink-600 transition-all">
+            Load Older Memories
+        </button>
+    </div>
+</main>
+{% endblock %}  
