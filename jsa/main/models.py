@@ -19,8 +19,18 @@ class Event(models.Model):
     location = models.CharField(max_length=200, default="TBA")
 
     # Media (e.g., the food/calligraphy header image)
-    thumbnail = models.ImageField(upload_to="event_headers/", blank=True, null=True)
+    thumbnail = models.ImageField(upload_to="event_thumbnails/", blank=True, null=True)
 
     # Metadata
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def eventLengthHours(self):
+        duration = self.end_datetime - self.start_datetime
+        return round(duration.total_seconds() / 3600)
+
+    def formatted_start_datetime(self):
+        start_datetime = timezone.localtime(self.start_datetime)
+        date_part = start_datetime.strftime("%B %d")
+        time_part = start_datetime.strftime("%I:%M %p").lstrip("0")
+        return f"{date_part} • {time_part}"
