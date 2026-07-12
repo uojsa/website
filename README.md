@@ -1,83 +1,59 @@
-### Outline
+## Table of Contents
+1. [How to Contribute](#how-to-contribute)
+2. [Reviewing Pull Requests](#reviewing-pull-requests)
+3. [Help](#help)
 
-- [Outline](#outline)
-- [To-Do](#to-do)
-- [Build and Run Locally](#build-and-run-locally)
-- [Development references](#development-references)
+## How to Contribute
 
-### To-Do
+1. Go to the **Issues** tab and select any issue you want to tackle
+2. Click on the issue and read the Description, Acceptance Criteria (AC), and Definition of Done
+3. To start development, create a branch called **issue-1** (We call the branch by the issue name to ensure branches can be traced back to issues during review, to simplify naming and typing, and to ensure branches with the same name aren't created.)
+```
+git checkout -b issue-1
+```
+5. Make the necessary changes in your branch to meet the requirements in the issue, then commit your changes. If you have multiple commits, squash them into a single commit (this faciliates the PR review for reviewers). [See How to Squash Commits](#how-to-squash-commits)
+7. Set your local branch to track the remote and push the changes to the remote branch
+```
+git push --set-upstream origin issue-1
+```
+9. On GitHub, go the **Pull requests** tab and click **New Pull Request**
+10. Select your newly created branch **issue-1** (or other) in the "compare: branch" field (the one on the right)
+11. In the description, make sure you write "Resolves #ISSUENUMBER". Describe your changes and explain how they meet the AC listed on the issue page.
+  <img width="50%" alt="image" src="https://github.com/user-attachments/assets/2eaa8156-c4e8-4844-8c70-c97b2cc582f8" />
 
-This is a list compiled for the current things that need fixing / doing. They're sorted by difficulty level for clarity. 
+## Reviewing Pull Requests
+1. Go to the **Pull requests** tab and select the PR you want to review
+2. Read the summary of changes and look through the code
+3. Checkout into the PR's branch (assuming branch is called "issue-1")
+```
+git checkout issue-1
+```
+5. Run the database migrations first, as the db cache are not saved to repository. This will safely update the database without pushing db code to the repository.
+```
+python manage.py migrate
+```
+7. Run the development server and test the changes
+```
+python manage.py runserver
+```
 
+## Help
 
-**Easy**
-- [x] Fix UI inconsistencies accross pages
-  - [x] Nav bar
-  - [x] Footer
-- [x] Make mentioned links point to correct pages
-- [ ] Remove occurences of made-up template things (e.g. sushi workshop, building location)
-- [ ] Fix contact information accross website (e.g., email, instagram)
-- [ ] Fix colours to match uOJSA Branding (see Google Drive > Communication > Branding)
-- [ ] Review wording is inline with uOJSA brand and vocabulary
-  - [ ] JSA -> uOJSA
-  - [ ] Add more items... (there are some not so great sentences in some places)
-
-**Medium**
-- [ ] Replace logo with actual logo (See Google Drive above)
-  - [ ] Header / Navbar
-  - [ ] Footer
-- [ ] Fix Mobile Usability
-  - [ ] Top right corner hamburger currently not opening navbar
-  - [ ] Check if any other issues
-
-**Hard / Undecided**
-- [ ] Create copies of website in EN/FR/JP
-
-
-Feel free to add more things to the site (e.g., improve the calendar), or replace some existing things! 
-
-Things to check if you're not sure:
--  The tailwind CSS documentation to see what UI elements can be added
--  Check out `message.txt` to see if any requirements are missing / too complex to implement (provide alternative).
--  Common sense :)
-   -  Does it look ugly?
-   -  Is something unusable?
-  
-Remember, if you feel like you can do something to improve it, just do it. Don't need to ask. If it turns out to be bad, we can always revert it.
-
-MOST IMPORTANT: *Commit frequently!!!!* This allows us to revert versions without removing too many new changes, and allows us to see new changes with more granularity. 
-
-### Build and Run Locally
-
-> [!NOTE]
-> You do not need to install Tailwind via npm for the pages to work. The app uses a CDN script that loads Tailwind in the browser at runtime. You only need to install Tailwind locally if you want to build CSS ahead of production, use custom Tailwind config/plugins, or avoid relying on the CDN in production app.
-
-First, ensure you have node.js installed (see [installation](https://nodejs.org/en)). Node is the official JavaScript package manager and is needed to install Vite. Vite is the local development web server we will use, since it is quick and easy to setup.
-
-First, in a local directory (not in a OneDrive-backed up folder T_T) clone the repository:
-
-`git clone https://github.com/uojsa/website`
-
-and cd into the new repository folder:
-
-`cd website`
-
-Once the contents of the repository have been cloned to your local directory, run the following:
-
-`npm install`
-
-This ensures any new packages added to `package.json` are installed to your project. Missing dependencies are often a cause for errors during build. Additionally, if you have not already, this command will install Vite.
-
-Finally, run the following:
-
-`npx vite`
-
-This will execute the vite package, setting up a local development server hosted usually on port 5173 at http://localhost:5173. If the port is already occupied, it should default to the next available port. Keep this is mind if it starts up on 5174 or higher. You might already have an old server running on 5173.
-
-Note: in order for the command to work, there must be a file called `index.html` in that directory. Ensure you are inside the correct folder where such file exists.
-
-
-### Development references
-
--  [Tailwind CSS Docs](https://tailwindcss.com/docs/styling-with-utility-classes)
-- [Vite](https://vite.dev/)
+### How to squash commits
+1. Launch the rebase session. Run this command in your terminal, specifying how many recent commits to include to squash:
+```
+git rebase -i HEAD~3
+```
+2. Configure the editor instructions. Your default text editor will open with a list of your recent commits ordered from oldest (top) to newest (bottom). It will look similar to this:
+```
+pick a1b2c3d First commit message
+pick e4f5g6h Second commit message
+pick i7j8k9l Third commit message
+```
+Leave the very first commit at the top as pick. Change the word pick to squash (or just s) for all subsequent lines below it.
+```
+pick a1b2c3d First commit message
+squash e4f5g6h Second commit message
+squash i7j8k9l Third commit message
+```
+3. Save and close. Save the file and close the editor (if using Vim, press Esc, type :wq, and hit Enter)
