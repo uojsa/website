@@ -3,6 +3,8 @@
 2. [Reviewing Pull Requests](#reviewing-pull-requests)
 3. [Help](#help)
 
+> [!Note]
+> The **Issues** page is not a comprehensive list, as new issues are gradually added as I plan along the requirements.
 ## How to Contribute
 
 1. Go to the **Issues** tab and select any issue you want to tackle (that has not been assigned to anyone!)
