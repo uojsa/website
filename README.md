@@ -5,9 +5,10 @@
 
 ## How to Contribute
 
-1. Go to the **Issues** tab and select any issue you want to tackle
-2. Click on the issue and read the Description, Acceptance Criteria (AC), and Definition of Done
-3. To start development, create a branch called **issue-1** (We call the branch by the issue name to ensure branches can be traced back to issues during review, to simplify naming and typing, and to ensure branches with the same name aren't created.)
+1. Go to the **Issues** tab and select any issue you want to tackle (that has not been assigned to anyone!)
+2. On the right-hand side menu, click **Assign yourself** so the issue is now yours
+3. Click on the issue and read the Description, Acceptance Criteria (AC), and Definition of Done
+4. To start development, create a branch called **issue-1** (We call the branch by the issue name to ensure branches can be traced back to issues during review, to simplify naming and typing, and to ensure branches with the same name aren't created.)
 ```
 git checkout -b issue-1
 ```
@@ -23,8 +24,8 @@ git push --set-upstream origin issue-1
 
 ## Reviewing Pull Requests
 1. Go to the **Pull requests** tab and select the PR you want to review
-2. Read the summary of changes and look through the code
-3. Checkout into the PR's branch (assuming branch is called "issue-1")
+3. Read the summary of changes and look through the code
+4. Checkout into the PR's branch (assuming branch is called "issue-1")
 ```
 git checkout issue-1
 ```
@@ -40,7 +41,7 @@ python manage.py runserver
 ## Help
 
 ### How to squash commits
-1. Launch the rebase session. Run this command in your terminal, specifying how many recent commits to include to squash:
+1. Launch the rebase session. Run this command in your terminal, specifying how many (3 in this case) recent commits to squash:
 ```
 git rebase -i HEAD~3
 ```
