@@ -5,9 +5,9 @@ from . import views
 app_name = 'archive'
 
 urlpatterns = [
-    # index page that shows all JCG photos for that semester
-    path("<slug:semester>/", views.index, name="index"),
+    # / index page that shows events as cards, divided per semester 
+    path("", views.index, name="index"),
 
-    # dedicated page for a single large event's photos
-    path("<slug:semester>/<slug:event_slug>", views.big_event, name="big-event"),
+    # dedicated page for a single event's photos
+    path("<slug:semester>/<slug:event_slug>", views.event, name="event"),
 ]

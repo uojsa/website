@@ -1,8 +1,8 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
+def index(request):
+    return render(request, "archive/index.html")
 
-def index(request, semester):
-    return HttpResponse(f"Archive: {semester}")
-
-def big_event(request, semester, event_slug):
+def event(request, semester, event_slug):
     return HttpResponse(f"Archive: {semester}/{event_slug}")

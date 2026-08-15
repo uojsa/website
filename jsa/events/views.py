@@ -1,10 +1,11 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
-def event_list(request):
-    return HttpResponse("Event List: Placeholder.")
+def index(request):
+    return render(request, "events/calendar.html")
 
-def event_detail(request, event_slug):
-    return HttpResponse(f"Event Details: {event_slug}")
+def detail(request, event_slug):
+    return render(request, "events/detail.html", {"event" : event_slug})
 
-def event_signup(request, id):
+def register(request, id):
     return HttpResponse("Event Sign Up: Placeholder")
