@@ -1,11 +1,15 @@
 from django.urls import path
 from . import views
 
+app_name = 'main'
+
 urlpatterns = [
+    # The '/' path, home page
     path("", views.home, name="home"),
+
+    # The '/home' path, also home
     path("home", views.home, name="home"),
-    path("archive", views.archive, name="archive"),
-    path("calendar", views.calendar, name="calendar"),
-    path("jcg", views.jcg, name="jcg"),
+
+    # The '/team' path, about page
     path("team", views.team, name="team"),
 ]
