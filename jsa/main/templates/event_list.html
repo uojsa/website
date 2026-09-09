@@ -127,20 +127,34 @@
                     </div>
                 </div>
             </div>
-
+            {% if context.latest_open %}
             <div class="mt-12 bg-slate-900 rounded-3xl overflow-hidden p-8 text-white relative">
                 <div class="absolute top-0 right-0 w-1/2 h-full opacity-30 bg-[url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80')] bg-cover"></div>
                 <div class="relative z-10 max-w-lg">
-                    <span class="bg-pink-600 text-[10px] font-extrabold uppercase px-2 py-1 rounded mb-4 inline-block">Featured Event</span>
-                    <h3 class="text-3xl font-bold mb-4">Spring Matsuri 2026</h3>
-                    <p class="text-slate-300 mb-6 italic">March 28, 2026 • 6:00 PM - 10:00 PM</p>
-                    <p class="text-slate-300 mb-8">Our biggest event of the year! Join us for food, games, and performances. Volunteers needed!</p>
+                    <span class="bg-pink-600 text-[10px] font-extrabold uppercase px-2 py-1 rounded mb-4 inline-block">{% if context.latest_open.featured %}Featured Event{% else %}Upcoming Event{% endif %}</span>
+                    <h3 class="text-3xl font-bold mb-4">{{ context.latest_open.name }}</h3>
+                    <p class="text-slate-300 mb-6 italic">{{ context.latest_open.date|date:"l, F j, Y"}} • {{ context.latest_open.start_time|time:"g:i A" }} - {{ context.latest_open.end_time|time:"g:i A" }}</p>
+                    <p class="text-slate-300 mb-8">{{ context.latest_open.banner }}</p>
                     <div class="flex gap-4">
-                        <button class="bg-pink-600 px-6 py-2 rounded-lg font-bold hover:bg-pink-700 transition">Register Now</button>
-                        <button class="bg-white/10 px-6 py-2 rounded-lg font-bold hover:bg-white/20 transition">Learn More</button>
-                    </div>
+    {% if context.latest_open %}
+        <a href="{% url 'event_register' context.latest_open.id %}" 
+           class="inline-block bg-pink-600 px-6 py-2 rounded-lg font-bold hover:bg-pink-700 transition">
+            Register
+        </a>
+    {% else %}
+        <button disabled 
+                class="bg-slate-800 text-slate-500 px-6 py-2 rounded-lg font-bold cursor-not-allowed">
+            Closed
+        </button>
+    {% endif %}
+                <a href="{% url 'event_detail' context.latest_open.event.slug %}" 
+                    class="inline-block bg-white/10 px-6 py-2 rounded-lg font-bold hover:bg-white/20 transition">
+                    Learn More
+                </a>
+            </div>
                 </div>
             </div>
+            {% endif %}
 
         </div>
     </div>
