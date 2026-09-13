@@ -1,0 +1,29 @@
+{% comment %}
+  Usage: {% include "components/icons.html" with icon=event.icon class="text-pink-600 text-xl" %}
+{% endcomment %}
+
+{% if icon == 'question' %}
+    <i class="fa-solid fa-circle-question {{ class }}"></i>
+
+{% elif icon == 'bell' %}
+    <i class="fa-solid fa-bell {{ class }}"></i>
+
+{% elif icon == 'calendar' %}
+    <i class="fa-solid fa-calendar-day {{ class }}"></i>
+
+{% elif icon == 'users' %}
+    <i class="fa-solid fa-users {{ class }}"></i>
+
+{% elif icon == 'info' %}
+    <i class="fa-solid fa-circle-info {{ class }}"></i>
+
+{% elif icon == 'clock' %}
+    <i class="fa-solid fa-clock {{ class }}"></i>
+
+{% elif icon == 'location' %}
+    <i class="fa-solid fa-location-dot {{ class }}"></i>
+
+{% else %}
+    <!-- Fallback if icon is empty or unrecognized -->
+    <i class="fa-solid fa-circle-info text-gray-400"></i>
+{% endif %}
