@@ -13,7 +13,7 @@
                 {% url 'event_list' as calendar_url %}
                 {% include "components/navlink.html" with target_url=calendar_url label="Events Calendar" %}
                 {% url 'archive_list' as archive_url %}
-                {% include "components/navlink.html" with target_url=archive_url label="Photo Archive" %}
+                {% include "components/navlink.html" with target_url=archive_url label="Photo Gallery" %}
                 {% url 'event_detail' 'japanese-conversation-group' as jcg_url %}
                 {% include "components/navlink.html" with target_url=jcg_url label="JCG" %}
                 {% url 'team' as team_url %}

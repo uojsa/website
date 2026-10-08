@@ -1,0 +1,2432 @@
+[
+{
+  "model": "main.container",
+  "pk": 1,
+  "fields": {
+    "event": 1,
+    "icon": "question",
+    "header": "What happens at the JCG?",
+    "text": "JCG isn't a formal class—it's a relaxed hangout. We break into small groups based on skill level. Some days we play language games, other days we just chat about hobbies, anime, or life in Ottawa over snacks."
+  }
+},
+{
+  "model": "main.container",
+  "pk": 2,
+  "fields": {
+    "event": 1,
+    "icon": "bell",
+    "header": "No Sign-ups Required",
+    "text": "Just show up! JCG is free for all uOttawa students. You don't need to be a JSA member to drop in and see what it's like."
+  }
+},
+{
+  "model": "main.card",
+  "pk": 1,
+  "fields": {
+    "container": 1,
+    "event_session": null,
+    "icon": "none",
+    "header": "Beginner Friendly",
+    "text": "Practice basic greetings and survival phrases."
+  }
+},
+{
+  "model": "main.card",
+  "pk": 2,
+  "fields": {
+    "container": 1,
+    "event_session": null,
+    "icon": "none",
+    "header": "Advanced Circles",
+    "text": "Deep dives into culture and natural slang."
+  }
+},
+{
+  "model": "main.card",
+  "pk": 3,
+  "fields": {
+    "container": null,
+    "event_session": 1,
+    "icon": "clock",
+    "header": "Duration",
+    "text": "Typically ~3h, feel free to leave whenever"
+  }
+},
+{
+  "model": "main.card",
+  "pk": 4,
+  "fields": {
+    "container": null,
+    "event_session": 1,
+    "icon": "location",
+    "header": "STEM Complex",
+    "text": "STEM 404"
+  }
+},
+{
+  "model": "main.card",
+  "pk": 5,
+  "fields": {
+    "container": null,
+    "event_session": 1,
+    "icon": "info",
+    "header": "Note for this week",
+    "text": "Bring your favourite games"
+  }
+},
+{
+  "model": "main.card",
+  "pk": 6,
+  "fields": {
+    "container": null,
+    "event_session": 2,
+    "icon": "clock",
+    "header": "Time",
+    "text": "Later start this wednesday since the room is booked before."
+  }
+},
+{
+  "model": "main.card",
+  "pk": 7,
+  "fields": {
+    "container": null,
+    "event_session": 2,
+    "icon": "users",
+    "header": "Bring a friend",
+    "text": "Bringing a friend may get you more fun"
+  }
+},
+{
+  "model": "main.card",
+  "pk": 8,
+  "fields": {
+    "container": null,
+    "event_session": 2,
+    "icon": "question",
+    "header": "First time?",
+    "text": "Don't worry. We've got activities for everyone. Come join us and have a good time."
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 6,
+  "fields": {
+    "album": 3,
+    "file": "albums/photos/2026/09/23/image1.jpg",
+    "uploaded_at": "2026-09-23T21:37:41.091Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 7,
+  "fields": {
+    "album": 3,
+    "file": "albums/photos/2026/09/23/image2.jpg",
+    "uploaded_at": "2026-09-23T21:37:41.091Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 8,
+  "fields": {
+    "album": 3,
+    "file": "albums/photos/2026/09/23/image3.jpg",
+    "uploaded_at": "2026-09-23T21:37:41.101Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 9,
+  "fields": {
+    "album": 3,
+    "file": "albums/photos/2026/09/23/image4.jpg",
+    "uploaded_at": "2026-09-23T21:37:41.101Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 10,
+  "fields": {
+    "album": 3,
+    "file": "albums/photos/2026/09/23/image5.jpg",
+    "uploaded_at": "2026-09-23T21:37:41.108Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 11,
+  "fields": {
+    "album": 4,
+    "file": "albums/photos/2026/10/07/image6.jpg",
+    "uploaded_at": "2026-10-08T03:12:17.016Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 12,
+  "fields": {
+    "album": 4,
+    "file": "albums/photos/2026/10/07/image7.jpg",
+    "uploaded_at": "2026-10-08T03:12:17.016Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 13,
+  "fields": {
+    "album": 4,
+    "file": "albums/photos/2026/10/07/image9.jpg",
+    "uploaded_at": "2026-10-08T03:12:17.055Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 14,
+  "fields": {
+    "album": 4,
+    "file": "albums/photos/2026/10/07/image8.jpg",
+    "uploaded_at": "2026-10-08T03:12:17.055Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 15,
+  "fields": {
+    "album": 4,
+    "file": "albums/photos/2026/10/07/image10.jpg",
+    "uploaded_at": "2026-10-08T03:12:17.065Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 17,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0001.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.840Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 18,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0003.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.861Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 19,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0004.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.861Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 20,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0005.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.882Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 21,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0006.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.882Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 22,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0007.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.904Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 23,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0008.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.904Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 24,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0009.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.927Z"
+  }
+},
+{
+  "model": "main.photo",
+  "pk": 25,
+  "fields": {
+    "album": 5,
+    "file": "albums/photos/2026/10/08/2025_11_20_0010.jpg",
+    "uploaded_at": "2026-10-09T03:16:04.927Z"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ivW4SRxIJPIgeusCd1dKZ0$BwvxNfqHPvUDmyf4AVkYBAjLKlE4Sz+02FmBHFaRff0=",
+    "last_login": "2026-10-08T00:06:32.071Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-30T20:19:52.509Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6sfn0siooqv8145a5fyc6yg7wny8cmty",
+  "fields": {
+    "session_data": "e30:1x4PGy:dYKpwhxqiIxDwxLY08vKlGkMoMxcO-SbbdKmwKGb8Xc",
+    "expire_date": "2026-09-23T20:52:00.360Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6u6batcmlevqgxcy0a26v152ve6ie95k",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSGFdni4dO83kBkGpGogKe3K-O_apAvd3nPOfYmA21rC1tMSZhZnocTpdyOMj1R3wHestyZjq-syk9wVedAur43T83K4fwcFe_nWxG7Mo-Ipe0xekzNKG7CcMGeIamA7gWaLBOBH48mlgbX1wKSiZ9Li_QHzuDhC:1x4PP6:Xs8IlhY8wfz3izHJbxy2BYswNExt4n6_-3GKDPu4Gz0",
+    "expire_date": "2026-09-23T21:00:24.539Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "j75kk75lj80cjzblzivsfkd41emvufci",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSGFdni4dO83kBkGpGogKe3K-O_apAvd3nPOfYmA21rC1tMSZhZnocTpdyOMj1R3wHestyZjq-syk9wVedAur43T83K4fwcFe_nWxG7Mo-Ipe0xekzNKG7CcMGeIamA7gWaLBOBH48mlgbX1wKSiZ9Li_QHzuDhC:1x9S63:pIDiphmcZljSepou7pcezZ-o2fzdB69eMKX5iESO1Kw",
+    "expire_date": "2026-10-07T18:53:35.353Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vhsm49quv8ssjkwl1wawksv5wkwwesdt",
+  "fields": {
+    "session_data": "e30:1x4PFa:tpKe4ugjyRYwT2NpDgfrqf5TMytLYZiUTpNRJjX4OMs",
+    "expire_date": "2026-09-23T20:50:34.033Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "za8a9uhsxxjyl5n69n79clp9zel27sxk",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSGFdni4dO83kBkGpGogKe3K-O_apAvd3nPOfYmA21rC1tMSZhZnocTpdyOMj1R3wHestyZjq-syk9wVedAur43T83K4fwcFe_nWxG7Mo-Ipe0xekzNKG7CcMGeIamA7gWaLBOBH48mlgbX1wKSiZ9Li_QHzuDhC:1xEbea:6qCc-PbEFjMTXQCHpmJHk_3odO4bCFTOW3V2J642CvQ",
+    "expire_date": "2026-10-22T00:06:32.072Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-09-02T01:52:43.485Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "japanese-conversation-group (2026-09-02)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-09-02T22:28:08.940Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-09-02T22:54:46.602Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Day of week\"]}}, {\"added\": {\"name\": \"event session\", \"object\": \"Japanese Conversation Group - 2026-09-02\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-09-02T23:00:17.316Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-09-02T23:04:42.793Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"event session\", \"object\": \"Japanese Conversation Group - 2026-09-02\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-09-03T02:28:43.465Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Event type\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-09-03T02:41:45.828Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Session asdf (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-09-08T03:25:44.431Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Banner\", \"Start time\", \"End time\"]}}, {\"added\": {\"name\": \"component\", \"object\": \"What happens at JCG?\"}}, {\"added\": {\"name\": \"component\", \"object\": \"No Sign-ups Required\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-09-08T03:27:34.269Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"name\": \"component\", \"object\": \"What happens at JCG?\", \"fields\": [\"Icon\"]}}, {\"changed\": {\"name\": \"component\", \"object\": \"No Sign-ups Required\", \"fields\": [\"Icon\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-09-08T04:53:35.620Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Start time\", \"End time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-09-08T04:56:58.898Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Signup link\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-09-08T04:57:09.769Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Signup link\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-09-08T15:29:19.377Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"container\", \"object\": \"What happens at the JCG?\"}}, {\"added\": {\"name\": \"container\", \"object\": \"No Sign-ups Required\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-09-08T15:34:43.664Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"card\", \"object\": \"Beginner Friendly\"}}, {\"added\": {\"name\": \"card\", \"object\": \"Advanced Circles\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-09-08T16:19:39.840Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"card\", \"object\": \"Session Status\"}}, {\"added\": {\"name\": \"card\", \"object\": \"Important Info\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-09-08T17:37:16.951Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-09-08T17:45:32.813Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-09-08T17:46:04.924Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-09-08T18:04:06.573Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Session asdf (2026-09-02)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-09-08T18:16:49.870Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-09-08T18:17:29.544Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-09-08T18:18:59.548Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-02)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-09-08T18:20:53.778Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-08)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Date\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-09-08T18:21:25.427Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-08)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-09-08T18:44:23.006Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-08)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-09-08T20:00:37.025Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-08)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-09-08T20:04:57.354Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-08)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-09-08T22:26:32.196Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-08)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Featured\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-09-09T01:54:01.113Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Date\", \"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-09-09T02:28:09.629Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-09-09T16:04:02.923Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-09-09T16:11:11.845Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Location\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-09-09T16:15:57.288Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-09-09T16:34:18.131Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Featured\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-09-09T16:34:37.223Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-09-09T16:39:18.830Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Banner\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-09-09T16:41:29.711Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"name\": \"card\", \"object\": \"Duration\", \"fields\": [\"Header\", \"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-09-09T16:44:37.222Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"name\": \"card\", \"object\": \"STEM Complex\", \"fields\": [\"Icon\", \"Header\", \"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-09-09T16:45:21.272Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"card\", \"object\": \"Note for this week\"}}, {\"changed\": {\"name\": \"card\", \"object\": \"Duration\", \"fields\": [\"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-09-09T18:06:06.301Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Location\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-09-09T18:26:57.718Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Day of week\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-09-09T19:26:49.975Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Day of week\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-09-09T19:27:06.486Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Frequency\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-09-09T19:28:03.080Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Frequency\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-09-09T19:28:26.284Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Japanese Conversation Group",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Frequency\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-09-13T16:28:24.174Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Featured\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-09-13T16:28:40.224Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-09-15T01:50:40.335Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "1",
+    "object_repr": "fAlbum: {self.session.name}",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-09-15T01:54:27.963Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "1",
+    "object_repr": "fAlbum: {self.session.name}",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-09-15T01:55:10.989Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "2",
+    "object_repr": "fAlbum: {self.session.name}",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-09-15T01:55:15.281Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "2",
+    "object_repr": "fAlbum: {self.session.name}",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-09-15T01:58:06.317Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "2",
+    "object_repr": "fAlbum: {self.session.name}",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-09-15T01:58:16.376Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "2",
+    "object_repr": "fAlbum: {self.session.name}",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-09-15T01:58:24.914Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "fAlbum: {self.session.name}",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-09-16T01:49:49.789Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2026-09-16T02:13:58.456Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG) (2026-09-09)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2026-09-16T02:14:08.210Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2026-09-23T19:10:42.800Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info icon\", \"Additional info\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2026-09-23T19:16:38.196Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info icon\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2026-09-23T19:16:48.841Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info icon\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2026-09-23T19:17:00.149Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info icon\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2026-09-23T19:17:11.604Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info icon\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2026-09-23T19:17:23.334Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info icon\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2026-09-23T20:15:35.784Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2026-09-23T20:32:42.391Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2026-09-23T21:00:43.646Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2026-09-23T21:26:06.968Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"deleted\": {\"name\": \"photo\", \"object\": \"Photo in 2026-09-09 (None)\"}}, {\"deleted\": {\"name\": \"photo\", \"object\": \"Photo in 2026-09-09 (None)\"}}, {\"deleted\": {\"name\": \"photo\", \"object\": \"Photo in 2026-09-09 (None)\"}}, {\"deleted\": {\"name\": \"photo\", \"object\": \"Photo in 2026-09-09 (None)\"}}, {\"deleted\": {\"name\": \"photo\", \"object\": \"Photo in 2026-09-09 (None)\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 68,
+  "fields": {
+    "action_time": "2026-09-23T21:30:32.669Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 69,
+  "fields": {
+    "action_time": "2026-09-23T21:37:45.762Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 70,
+  "fields": {
+    "action_time": "2026-09-23T23:37:42.897Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 71,
+  "fields": {
+    "action_time": "2026-09-23T23:37:47.877Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album: First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 72,
+  "fields": {
+    "action_time": "2026-10-01T21:09:03.562Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album object (3)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 73,
+  "fields": {
+    "action_time": "2026-10-01T21:25:27.561Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album object (3)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 74,
+  "fields": {
+    "action_time": "2026-10-01T23:07:13.993Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info icon\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 75,
+  "fields": {
+    "action_time": "2026-10-08T02:57:15.608Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Halloween Session",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 76,
+  "fields": {
+    "action_time": "2026-10-08T02:58:30.808Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Halloween Session",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"card\", \"object\": \"Header Text\"}}, {\"added\": {\"name\": \"card\", \"object\": \"Costume!\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 77,
+  "fields": {
+    "action_time": "2026-10-08T03:00:30.617Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Halloween Session",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"card\", \"object\": \"Boowoo\"}}, {\"changed\": {\"name\": \"card\", \"object\": \"Food\", \"fields\": [\"Header\", \"Text\"]}}, {\"changed\": {\"name\": \"card\", \"object\": \"Bring a friend\", \"fields\": [\"Icon\", \"Header\", \"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 78,
+  "fields": {
+    "action_time": "2026-10-08T03:01:01.933Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Halloween Session",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 79,
+  "fields": {
+    "action_time": "2026-10-08T03:02:11.413Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Halloween Session",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 80,
+  "fields": {
+    "action_time": "2026-10-08T03:05:27.308Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album for First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Tag name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 81,
+  "fields": {
+    "action_time": "2026-10-08T03:05:41.202Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album for First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Tag name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 82,
+  "fields": {
+    "action_time": "2026-10-08T03:12:20.700Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Halloween Session",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 83,
+  "fields": {
+    "action_time": "2026-10-08T03:13:53.455Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Banner\"]}}, {\"changed\": {\"name\": \"card\", \"object\": \"Time\", \"fields\": [\"Icon\", \"Header\", \"Text\"]}}, {\"changed\": {\"name\": \"card\", \"object\": \"Bring a friend\", \"fields\": [\"Text\"]}}, {\"changed\": {\"name\": \"card\", \"object\": \"First time?\", \"fields\": [\"Icon\", \"Header\", \"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 84,
+  "fields": {
+    "action_time": "2026-10-08T03:14:45.035Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 85,
+  "fields": {
+    "action_time": "2026-10-08T03:15:54.981Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info icon\", \"Additional info\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 86,
+  "fields": {
+    "action_time": "2026-10-08T03:16:42.250Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Tag name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 87,
+  "fields": {
+    "action_time": "2026-10-08T03:17:27.184Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2026-10-08T03:21:23.415Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Date\", \"Registration deadline\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2026-10-08T03:21:36.871Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2026-10-08T03:21:56.470Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2026-10-08T03:23:40.158Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2026-10-08T03:40:34.042Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Date\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2026-10-08T03:40:49.678Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Room\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2026-10-08T03:49:35.608Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Additional info\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2026-10-08T03:49:56.427Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "2",
+    "object_repr": "Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Date\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2026-10-08T03:53:33.974Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2026-10-08T03:53:38.229Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album for First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2026-10-08T03:53:47.784Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "1",
+    "object_repr": "First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Room\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2026-10-09T02:00:16.600Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2026-10-09T02:28:19.137Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "4",
+    "object_repr": "Album for Second Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2026-10-09T02:28:26.431Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "3",
+    "object_repr": "Album for First Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2026-10-09T03:08:46.097Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "eventsession"
+    ],
+    "object_id": "3",
+    "object_repr": "Old Session (JCG)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2026-10-09T03:09:16.524Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "5",
+    "object_repr": "Album for Old Session (JCG)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2026-10-09T03:16:08.188Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "5",
+    "object_repr": "Album for Old Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 105,
+  "fields": {
+    "action_time": "2026-10-09T03:16:51.603Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "5",
+    "object_repr": "Album for Old Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"deleted\": {\"name\": \"photo\", \"object\": \"Photo #None\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 106,
+  "fields": {
+    "action_time": "2026-10-09T03:17:56.875Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "main",
+      "album"
+    ],
+    "object_id": "5",
+    "object_repr": "Album for Old Session (JCG)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Num attendees\"]}}]"
+  }
+},
+{
+  "model": "main.album",
+  "pk": 3,
+  "fields": {
+    "session": 1,
+    "semester_slug": "fall",
+    "event_slug": "first-session-jcg",
+    "description": "Our first JCG session of the Fall 2026 Semester. We were so surprised with the turnout, it was huge. We were so happy to see everyone laughing and making friends too.",
+    "num_attendees": 30,
+    "tag_name": "japanese-conversation-group",
+    "additional_info_icon": "location",
+    "additional_info": "Group Activity",
+    "created_by": [
+      "admin"
+    ],
+    "last_edited_by": [
+      "admin"
+    ],
+    "created_at": "2026-09-15T01:58:24.913Z",
+    "last_edited_at": "2026-10-09T02:28:26.429Z"
+  }
+},
+{
+  "model": "main.album",
+  "pk": 4,
+  "fields": {
+    "session": 2,
+    "semester_slug": "fall",
+    "event_slug": "second-session-jcg",
+    "description": "This was a regular JCG, nothing to see. But turnout was especially high given the start of the semester. There's so much going on in here.",
+    "num_attendees": 30,
+    "tag_name": "Social",
+    "additional_info_icon": "users",
+    "additional_info": "Fun & Games",
+    "created_by": [
+      "admin"
+    ],
+    "last_edited_by": [
+      "admin"
+    ],
+    "created_at": "2026-10-08T03:02:11.411Z",
+    "last_edited_at": "2026-10-09T02:28:19.134Z"
+  }
+},
+{
+  "model": "main.album",
+  "pk": 5,
+  "fields": {
+    "session": 3,
+    "semester_slug": "fall",
+    "event_slug": "old-session-jcg",
+    "description": "Old session to test different year.",
+    "num_attendees": 23,
+    "tag_name": "Social",
+    "additional_info_icon": "location",
+    "additional_info": "",
+    "created_by": [
+      "admin"
+    ],
+    "last_edited_by": [
+      "admin"
+    ],
+    "created_at": "2026-10-09T03:09:16.522Z",
+    "last_edited_at": "2026-10-09T03:17:56.873Z"
+  }
+},
+{
+  "model": "main.eventsession",
+  "pk": 1,
+  "fields": {
+    "event": 1,
+    "name": "First Session (JCG)",
+    "banner": "Join us for our first JCG of the semester! Our next meeting will be first class themed. We will be playing games and socializing.",
+    "date": "2026-09-09",
+    "start_time": "16:30:00",
+    "end_time": "19:00:00",
+    "registration_deadline": "2026-09-14T23:30:00Z",
+    "location": "STEM Complex",
+    "room": "STEM 464",
+    "signup_link": null,
+    "poster_image": "",
+    "cost": "0.00",
+    "capacity": 30,
+    "featured": true,
+    "created_at": "2026-09-02T22:54:46.601Z",
+    "last_edited_at": "2026-10-08T03:53:47.782Z",
+    "created_by": [
+      "admin"
+    ],
+    "last_edited_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "main.eventsession",
+  "pk": 2,
+  "fields": {
+    "event": 1,
+    "name": "Second Session (JCG)",
+    "banner": "Join us for some more fun and games.",
+    "date": "2026-10-21",
+    "start_time": "16:30:00",
+    "end_time": "19:00:00",
+    "registration_deadline": "2026-10-21T03:21:20Z",
+    "location": "STEM Complex",
+    "room": "STEM 665",
+    "signup_link": null,
+    "poster_image": "",
+    "cost": "0.00",
+    "capacity": 30,
+    "featured": false,
+    "created_at": "2026-10-08T02:57:15.606Z",
+    "last_edited_at": "2026-10-08T03:49:56.425Z",
+    "created_by": [
+      "admin"
+    ],
+    "last_edited_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "main.eventsession",
+  "pk": 3,
+  "fields": {
+    "event": 1,
+    "name": "Old Session (JCG)",
+    "banner": "Just some text to create an older 2025 album.",
+    "date": "2025-11-21",
+    "start_time": "18:00:00",
+    "end_time": "19:00:00",
+    "registration_deadline": null,
+    "location": "STEM Complex",
+    "room": "664",
+    "signup_link": null,
+    "poster_image": "",
+    "cost": "0.00",
+    "capacity": 30,
+    "featured": false,
+    "created_at": "2026-10-09T03:08:46.093Z",
+    "last_edited_at": "2026-10-09T03:08:46.093Z",
+    "created_by": [
+      "admin"
+    ],
+    "last_edited_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "main.event",
+  "pk": 1,
+  "fields": {
+    "name": "Japanese Conversation Group",
+    "slug": "japanese-conversation-group",
+    "banner": "Whether you're a total beginner learning your first Hiragana or a native speaker looking for community, JCG is your weekly space to practice and connect.",
+    "event_type": "LANGUAGE",
+    "day_of_week": 2,
+    "frequency": 4,
+    "start_time": "16:30:00",
+    "end_time": "17:00:00",
+    "location": "STEM Complex",
+    "room": "STEM 404",
+    "note": "See you there!",
+    "created_by": [
+      "admin"
+    ],
+    "last_edited_by": [
+      "admin"
+    ],
+    "created_at": "2026-09-02T01:52:43.482Z",
+    "last_edited_at": "2026-09-09T19:28:26.280Z",
+    "sponsors": []
+  }
+},
+{
+  "model": "main.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "role": null
+  }
+}
+]

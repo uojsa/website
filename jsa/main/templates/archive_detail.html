@@ -1,85 +1,140 @@
-{% extends "base.html" %}
-{% block title %}{{ event }}{% endblock %}
+{% extends "base.html" %} 
+
+{% block title %}{{ album.session.name }} - Photo Gallery{% endblock %} 
+
 {% block content %}
-    <header class="bg-white border-b py-20">
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <span class="text-blue-600 font-bold tracking-widest uppercase text-xs mb-4 block">
-</span>
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Japanese <span class="text-pink-600">Conversation</span> Group</h1>
-            <p class="text-slate-500 text-lg leading-relaxed max-w-2xl mx-auto">
-                Whether you're a total beginner learning your first Hiragana or a native speaker looking for community, JCG is your weekly space to practice and connect.
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- Navigation / Back Button -->
+    <div class="mb-6">
+        <a href="{% url 'archive_list' %}" class="inline-flex items-center text-sm font-medium text-slate-600 hover:text-pink-600 transition-colors">
+            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Archive
+        </a>
+    </div>
+
+    <!-- Header Section -->
+    <div class="mb-10">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-3"> 
+            <!-- Left Side: Tags & Photo Count -->
+            <div class="flex flex-wrap items-center gap-2">
+                {% if album.tag_name %}
+                    <span class="px-3 py-1 bg-pink-100 text-pink-700 font-semibold text-xs rounded-full uppercase tracking-wider">
+                        {{ album.tag_name }}
+                    </span>
+                {% endif %}
+                <span class="text-sm font-medium text-slate-500">
+                    {{ album.photos.all|length }} Photo{{ album.photos.all|length|pluralize }}
+                </span>
+            </div>
+        </div>
+        <!-- Title + Season & Date Inline Row -->
+        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-4">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {{ album.session.name }}
+            </h1>
+        </div>
+        {% if album.description %}
+            <p class="text-lg text-slate-600 max-w-3xl mb-6 leading-relaxed">
+                {{ album.description }}
             </p>
-        </div>
-    </header>
+        {% endif %}
 
-    <section class="max-w-7xl mx-auto px-4 py-16">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            
-            <div class="lg:col-span-2 space-y-12">
-                <div>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-circle-question text-pink-600"></i> What happens at JCG?
-                    </h2>
-                    <p class="text-slate-600 leading-relaxed mb-6">
-                        JCG isn't a formal class—it's a relaxed hangout. We break into small groups based on skill level. Some days we play language games, other days we just chat about hobbies, anime, or life in Ottawa over snacks.
-                    </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="p-4 bg-white rounded-xl border border-slate-200">
-                            <h4 class="font-bold mb-1">Beginner Friendly</h4>
-                            <p class="text-xs text-slate-500">Practice basic greetings and survival phrases.</p>
-                        </div>
-                        <div class="p-4 bg-white rounded-xl border border-slate-200">
-                            <h4 class="font-bold mb-1">Advanced Circles</h4>
-                            <p class="text-xs text-slate-500">Deep dives into culture and natural slang.</p>
-                        </div>
-                    </div>
+        <!-- Metadata Bar -->
+        <div class="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-600 border-t border-b border-slate-200 py-4">
+            {% if album.num_attendees %}
+                <div class="flex items-center">
+                    {% include "components/icons.html" with icon="users" class="mr-1.5 text-pink-500 w-4 h-4" %}
+                    <span>{{ album.num_attendees }}+ Attendees</span>
                 </div>
+            {% endif %}
 
-                <div>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-bell text-pink-600"></i> No Sign-ups Required
-                    </h2>
-                    <p class="text-slate-600 leading-relaxed">
-                        Just show up! JCG is free for all uOttawa students. You don't need to be a JSA member to drop in and see what it's like.
-                    </p>
+            {% if album.additional_info_icon == "location" %}
+                <div class="flex items-center">
+                    {% include "components/icons.html" with icon=album.additional_info_icon class="mr-1.5 text-pink-500 w-4 h-4" %}
+                    <span>{{ album.session.location }}{% if album.session.room %} | {{ album.session.room }}{% endif %}</span>
                 </div>
+            {% elif album.additional_info %}
+                <div class="flex items-center">
+                    {% include "components/icons.html" with icon=album.additional_info_icon class="mr-1.5 text-pink-500 w-4 h-4" %}
+                    <span>{{ album.additional_info }}</span>
+                </div>
+            {% endif %}
+            <div class="flex items-center">
+               {% include "components/icons.html" with icon="calendar" class="mr-1.5 text-pink-500 w-4 h-4" %} {{album.session.date|date:"Y/m/d" }}
             </div>
+        </div>
+    </div>
 
-            <div class="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-600/20 rounded-full blur-3xl"></div>
+    <!-- Photo Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for photo in album.photos.all %}
+            <div class="group relative aspect-square overflow-hidden rounded-2xl bg-slate-100 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+                 onclick="openLightbox('{{ photo.file.url }}')">
                 
-                <h3 class="text-pink-500 font-bold uppercase tracking-widest text-xs mb-2">Current Term</h3>
-                <h4 class="text-2xl font-bold mb-8">Winter 2026 Schedule</h4>
+                <img src="{{ photo.file.url }}" 
+                     alt="{{ album.session.name }} photo" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="text-pink-500 mt-1"><i class="fa-solid fa-calendar-day"></i></div>
-                        <div>
-                            <p class="font-bold">Every Wednesday</p>
-                            <p class="text-slate-400 text-sm">5:00 PM – 7:00 PM</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="text-pink-500 mt-1"><i class="fa-solid fa-location-dot"></i></div>
-                        <div>
-                            <p class="font-bold">Hamelin Hall (MHN)</p>
-                            <p class="text-slate-400 text-sm">Room 204</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="text-pink-500 mt-1"><i class="fa-solid fa-circle-info"></i></div>
-                        <div>
-                            <p class="font-bold">Note for this week</p>
-                            <p class="text-slate-400 text-sm italic">Meeting in the UCU Lounge instead!</p>
-                        </div>
-                    </div>
+                <!-- Hover Overlay -->
+                <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="p-2 bg-white/90 rounded-full text-slate-800 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                        </svg>
+                    </span>
                 </div>
 
-                <button class="w-full mt-10 bg-white text-slate-900 font-bold py-3 rounded-xl hover:bg-pink-100 hover:text-pink-600 transition">
-                    Add to Google Calendar
-                </button>
             </div>
+        {% empty %}
+            <div class="col-span-full py-16 text-center bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
+                <p class="text-slate-500 text-base font-medium">No photos yet, we're working on it!</p>
+            </div>
+        {% endfor %}
+    </div>
 
-        </div>
-    </section>
+</div>
+
+<!-- Lightbox Modal for Full Resolution Viewing -->
+<div id="lightbox" 
+     class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300"
+     onclick="closeLightbox(event)">
+    
+    <button onclick="closeLightbox(event)" 
+            class="absolute top-5 right-5 text-white/80 hover:text-white p-2 text-3xl font-bold focus:outline-none"
+            aria-label="Close modal">
+        &times;
+    </button>
+    
+    <div class="relative max-w-5xl max-h-[90vh] overflow-hidden rounded-xl">
+        <img id="lightbox-img" src="" alt="Enlarged event view" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+    </div>
+</div>
+
+<script>
+    function openLightbox(imageUrl) {
+        const modal = document.getElementById('lightbox');
+        const modalImg = document.getElementById('lightbox-img');
+        modalImg.src = imageUrl;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+        const modal = document.getElementById('lightbox');
+        // Close if clicked backdrop, close button, or ESC key
+        if (event.target.id === 'lightbox' || event.target.tagName === 'BUTTON' || event.key === 'Escape') {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox(e);
+        }
+    });
+</script>
 {% endblock %}

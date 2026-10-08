@@ -2,7 +2,7 @@ from django.db.models import Prefetch
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 
-from .models import Event, EventSession
+from .models import Event, EventSession, Album, Photo
 
 # Create your views here.
 
@@ -55,8 +55,37 @@ def event_register(request, id):
 
 ## Archive Views ##
 
-def archive_list(request):
-    return render(request, "archive_list.html")
+def archive_list(request, year=None, semester=None):
+    # get albums according to URL
+    albums = Album.objects.order_by("-session__date").prefetch_related("photos").all() 
+    if year is not None:
+        albums = Album.objects.select_related("session").filter(session__date__year=year).order_by("-session__date").prefetch_related("photos").all()
+        if semester is not None:
+            albums = albums.filter(semester_slug=semester)
 
-def archive_detail(request, semester, event_slug):
-    return HttpResponse(f"Archive: {semester}/{event_slug}")
+    # get all distinct years
+    years = (
+        Album.objects.values_list("session__date__year", flat=True)
+        .distinct()
+        .order_by("-session__date__year")
+    )
+
+    # returned context to template
+    context = {
+        "albums": albums,
+        "years": years,
+        "selected_year": year
+    }
+
+    return render(request, "archive_list.html", context)
+
+def archive_detail(request, year, semester, event_slug):
+    album = get_object_or_404(
+        Album.objects.select_related("session").prefetch_related(
+            Prefetch("photos", queryset=Photo.objects.order_by("-id"))
+        ),
+        session__date__year=year,
+        semester_slug=semester,
+        event_slug=event_slug,
+    )
+    return render(request, "archive_detail.html", {"album" : album})
