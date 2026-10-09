@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 from . import views
@@ -19,9 +21,15 @@ urlpatterns = [
     ## Archive Routes ##
     # index page that shows events as cards, divided per semester
     path("archive/", views.archive_list, name="archive_list"),
+    path("archive/<int:year>/", views.archive_list, name="archive_list_year"),
+    path("archive/<int:year>/<slug:semester>", views.archive_list, name="archive_list_sem"),
     # dedicated page for a single event"s photos
-    path("archive/<slug:semester>/<slug:event_slug>", views.archive_detail, name="archive_detail"),
+    path("archive/<int:year>/<slug:semester>/<slug:event_slug>/", views.archive_detail, name="archive_detail"),
 
     # The "/team" path, about page
     path("team", views.team, name="team"),
 ]
+
+# Append media serving only during local development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
