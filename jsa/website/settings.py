@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'main',
+    'dragndrop_related',
     'nested_admin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
 ]
 
 MIDDLEWARE = [
@@ -114,6 +115,12 @@ TIME_ZONE = 'America/Toronto'
 USE_I18N = True
 
 USE_TZ = True
+
+# Photos & Media
+# Base URL used to access uploaded files in the browser
+MEDIA_URL = "/media/"
+# Base directory where user-uploaded files are stored on disk
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 # Static files (CSS, JavaScript, Images)

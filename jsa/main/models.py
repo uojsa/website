@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.text import slugify
 
 class IconChoices(models.TextChoices):
     INFO = "info", "Info / Note"
@@ -71,7 +72,10 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 # 3. SPONSORS
 # ==========================================
 class Sponsor(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(
+        max_length=100,
+        null=False
+    )
     logo = models.ImageField(upload_to="sponsor_logos/", blank=True, null=True)
     website = models.URLField(blank=True, null=True)
 
@@ -109,14 +113,22 @@ class Event(models.Model):
         YEARLY = 8, "Every Year"
         ONCE = 9, "One-off"
 
-    name = models.CharField(max_length=200)
+    name = models.CharField(
+        max_length=200,
+        null=False
+    )
     slug = models.SlugField(
         unique=True,
         help_text="URL string (e.g., japanese-conversation-group)",
     ) 
-    banner = models.TextField()
+    banner = models.TextField(
+        null=False,
+        help_text="Event description that will appear in banner."
+    )
     event_type = models.CharField(
-        max_length=20, choices=EVENT_TYPE_CHOICES, default="CULTURE"
+        max_length=20, 
+        choices=EVENT_TYPE_CHOICES,
+        default="CULTURE"
     )
     day_of_week = models.PositiveSmallIntegerField(
         choices=DayOfWeek.choices,
@@ -179,7 +191,7 @@ class Event(models.Model):
         related_name="events_edited",
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    last_edited_at = models.DateTimeField(auto_now=True)
 
     @property
     def latest_open_session(self):
@@ -217,7 +229,9 @@ class Container(models.Model):
         help_text="Select an icon to display on event cards and banners.",
     )
     header = models.CharField(max_length=100)
-    text = models.TextField()
+    text = models.TextField(
+        null=False
+    )
 
     def __str__(self):
         return self.header
@@ -284,7 +298,7 @@ class EventSession(models.Model):
      
     # analytics
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    last_edited_at = models.DateTimeField(auto_now=True)
 
     # Audit Trail Fields
     created_by = models.ForeignKey(
@@ -295,13 +309,13 @@ class EventSession(models.Model):
         editable=False,
         related_name="created_occurrences",
     )
-    updated_by = models.ForeignKey(
+    last_edited_by = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
         editable=False,
-        related_name="updated_occurrences",
+        related_name="edited_occurrences",
     )
 
     @property
@@ -317,7 +331,7 @@ class EventSession(models.Model):
         return True
 
     def __str__(self):
-        return f"{self.name} ({self.date})"
+        return f"{self.name}"
 
 class Card(models.Model):
     container = models.ForeignKey(
@@ -345,3 +359,90 @@ class Card(models.Model):
 
     def __str__(self):
         return self.header
+
+class Album(models.Model):
+    session = models.ForeignKey(
+        EventSession, on_delete=models.CASCADE, related_name="sessions"
+    ) 
+    semester_slug = models.SlugField(max_length=20, blank=True)
+    event_slug = models.SlugField(
+        max_length=50,
+        blank=True
+    )
+    description = models.TextField() 
+    num_attendees =  models.PositiveIntegerField(
+        default=30,
+        help_text="If no exact value, put an estimate to display in Photo Gallery page."
+    ) 
+    tag_name = models.CharField(
+        max_length=50,
+        help_text="Custom text label that goes above album card."
+    ) 
+    additional_info_icon = models.CharField(
+        max_length=20,
+        choices=IconChoices.choices,
+        default=IconChoices.LOCATION,
+        help_text="Custom icon for additional info.",
+    )
+    additional_info = models.CharField(
+        max_length=50,
+        blank=True,
+        help_text="Custom label next to icon. Leave blank to use Location." 
+    ) 
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        editable=False,
+        related_name="albums_created",
+    )   
+    last_edited_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        editable=False,
+        related_name="albums_edited", 
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_edited_at = models.DateTimeField(auto_now=True) 
+
+    def save(self, *args, **kwargs):
+        # Ensure session relationship is available
+        if self.session_id:
+
+            # Generate semester_slug from date
+            if self.session.date:
+                month = self.session.date.month
+                if 9 <= month <= 12:
+                    season = "fall"
+                elif 1 <= month <= 4:
+                    season = "winter"
+                else:
+                    season = "summer"
+                
+                # Fixed typo: semester_slug
+                self.semester_slug = f"{season}"
+
+            # Generate event_slug from session name
+            if hasattr(self.session, "name") and self.session.name:
+                # Fixed: assign directly to self.event_slug
+                self.event_slug = slugify(self.session.name)
+
+        # Call super().save() to persist changes to database
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Album for {self.session.name}" 
+
+class Photo(models.Model):
+    album = models.ForeignKey(
+        Album, on_delete=models.CASCADE, related_name="photos"
+    )
+    # Pillow handles image validation when saving this field
+    file  = models.ImageField(upload_to="albums/photos/%Y/%m/%d/")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Photo #{self.id}"
