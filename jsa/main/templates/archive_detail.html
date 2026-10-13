@@ -72,7 +72,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {% for photo in album.photos.all %}
             <div class="group relative aspect-square overflow-hidden rounded-2xl bg-slate-100 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-                 onclick="openLightbox('{{ photo.file.url }}')">
+                 onclick="openLightbox({{ forloop.counter0 }})">
                 
                 <img src="{{ photo.file.url }}" 
                      alt="{{ album.session.name }} photo" 
@@ -98,42 +98,115 @@
 </div>
 
 <!-- Lightbox Modal for Full Resolution Viewing -->
-<div id="lightbox" 
-     class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300"
-     onclick="closeLightbox(event)">
-    
-    <button onclick="closeLightbox(event)" 
-            class="absolute top-5 right-5 text-white/80 hover:text-white p-2 text-3xl font-bold focus:outline-none"
+<div id="lightbox"
+     class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300"
+     onclick="handleLightboxClick(event)">
+
+    <!-- Close Button -->
+    <button onclick="closeLightbox()"
+            class="absolute top-5 right-5 z-10 text-white/70 hover:text-white p-2 text-3xl font-bold focus:outline-none transition-colors"
             aria-label="Close modal">
         &times;
     </button>
-    
-    <div class="relative max-w-5xl max-h-[90vh] overflow-hidden rounded-xl">
-        <img id="lightbox-img" src="" alt="Enlarged event view" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+
+    <!-- Photo Counter -->
+    <div id="lightbox-counter" class="absolute top-6 left-6 text-white/80 text-sm font-medium tracking-wide">
+        <!-- JS populates counter (e.g., "1 / 12") -->
     </div>
+
+    <!-- Previous Button -->
+    <button onclick="prevPhoto(event)"
+            class="absolute left-4 sm:left-8 z-10 text-white/70 hover:text-white p-3 rounded-full bg-black/40 hover:bg-black/70 focus:outline-none transition-all"
+            aria-label="Previous photo">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+    </button>
+
+    <!-- Main Image Container -->
+    <div class="relative max-w-7xl max-h-[90vh] overflow-hidden flex items-center justify-center select-none">
+        <img id="lightbox-img" src="" alt="Full resolution view" class="max-w-full max-h-[88vh] object-contain rounded-lg shadow-2xl transition-all duration-200">
+    </div>
+
+    <!-- Next Button -->
+    <button onclick="nextPhoto(event)"
+            class="absolute right-4 sm:right-8 z-10 text-white/70 hover:text-white p-3 rounded-full bg-black/40 hover:bg-black/70 focus:outline-none transition-all"
+            aria-label="Next photo">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+    </button>
 </div>
 
 <script>
-    function openLightbox(imageUrl) {
-        const modal = document.getElementById('lightbox');
+    // Build array of full-resolution URLs directly from Django loop
+    const galleryPhotos = [
+        {% for photo in album.photos.all %}
+            "{{ photo.file.url }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+
+    let currentIndex = 0;
+
+    function updateLightboxContent() {
+        if (galleryPhotos.length === 0) return;
         const modalImg = document.getElementById('lightbox-img');
-        modalImg.src = imageUrl;
+        const counter = document.getElementById('lightbox-counter');
+        
+        modalImg.src = galleryPhotos[currentIndex];
+        counter.textContent = `${currentIndex + 1} / ${galleryPhotos.length}`;
+    }
+
+    function openLightbox(index) {
+        if (galleryPhotos.length === 0) return;
+        currentIndex = index;
+        updateLightboxContent();
+        
+        const modal = document.getElementById('lightbox');
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
 
-    function closeLightbox(event) {
+    function closeLightbox() {
         const modal = document.getElementById('lightbox');
-        // Close if clicked backdrop, close button, or ESC key
-        if (event.target.id === 'lightbox' || event.target.tagName === 'BUTTON' || event.key === 'Escape') {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    function nextPhoto(event) {
+        if (event) event.stopPropagation();
+        if (galleryPhotos.length === 0) return;
+        currentIndex = (currentIndex + 1) % galleryPhotos.length;
+        updateLightboxContent();
+    }
+
+    function prevPhoto(event) {
+        if (event) event.stopPropagation();
+        if (galleryPhotos.length === 0) return;
+        currentIndex = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+        updateLightboxContent();
+    }
+
+    function handleLightboxClick(event) {
+        // Close modal if user clicks backdrop area outside image & controls
+        if (event.target.id === 'lightbox') {
+            closeLightbox();
         }
     }
 
+    // Keyboard Navigation
     document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('lightbox');
+        if (modal.classList.contains('hidden')) return;
+
         if (e.key === 'Escape') {
-            closeLightbox(e);
+            closeLightbox();
+        } else if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault(); // Prevent page scrolling on space bar
+            nextPhoto();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevPhoto();
         }
     });
 </script>
