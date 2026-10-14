@@ -1,10 +1,33 @@
 ## Table of Contents
+1. [How to Run with Saved Changes](#how-to-run-with-saved-changes)
 1. [How to Contribute](#how-to-contribute)
 2. [Reviewing Pull Requests](#reviewing-pull-requests)
 3. [Help](#help)
 
 > [!Note]
 > The **Issues** page is not a comprehensive list, as new issues are gradually added as I plan along the requirements.
+
+### How to Run with Saved Changes
+
+Change into the directory where the `manage.py` is:
+
+```
+python manage.py loaddata datadump.json
+```
+
+This should load all model changes as it was left by the last person who pushed the `datadump.json`. Essentially, 
+it's storing a JSON version of the database (apparently that's fine). 
+
+Then if you want to push the changes made:
+
+```
+python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 2 > datadump.json
+```
+
+> Only caveat is it doesn't save images that were user-uploaded (like for albums). So they might give some sort of
+> not found or error (i'm not sure yet!). You can just replace those images with other images. And of course, do not
+> push those images back to the repo. Causes bloat.
+
 ## How to Contribute
 
 1. Go to the **Issues** tab and select any issue you want to tackle (that has not been assigned to anyone!)
