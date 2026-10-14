@@ -1,6 +1,7 @@
 from django.db.models import Prefetch
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
 from .models import Event, EventSession, Album, Photo
 
@@ -17,26 +18,56 @@ def team(request):
 
 ## Event Views ##
 
-def event_list(request):
-    sessions = get_object_or_404(
-        Event.objects.prefetch_related(
-            Prefetch(
-                "sessions", queryset=EventSession.objects.order_by("-date", "-id")
-            )
-        )
-    )
+def session_list(request):
+    # getting event types for page filtering
+    event_types = Event.EVENT_TYPES_CONFIG
+
+    # getting sessions from db
+    sessions = EventSession.objects.select_related("event").order_by("date", "-id")
+
+    # put sessions into python list so can be JSON serialized
+    sessions_list = [
+        {
+            "id": s.id,
+            "parent_event": s.event.name,
+            "type": s.event.event_type,
+            "colour": event_types[s.event.event_type]["colour"],
+            "title": s.name,
+            "date": s.date,
+            "time": f"{s.start_time} - {s.end_time}",
+            "deadline": s.registration_deadline,
+            "location": s.location,
+            "room": s.room,
+            "page_url": reverse("event_register", args=[s.id]),
+            "form_url": s.signup_link, 
+        }
+        for s in sessions
+    ] 
+
     # Fetch the single latest open EventSession directly for an event
     latest_open = (
         EventSession.objects.filter(registration_deadline__gt=timezone.now())
-        .order_by("-date", "-id")
+        .order_by("date", "-id")
         .first()  # .first() is fine here because this is NOT inside Prefetch()
     )
 
+    # Fetch the first featured event
+    featured_event = (
+        EventSession.objects.filter(
+            registration_deadline__gt=timezone.now(),
+            featured=True,
+        )
+        .order_by("date", "-id")
+        .first()  # .first() is fine here because this is NOT inside Prefetch()
+    )
+
+    # returning context
     context = {
-        "sessions" : sessions,
-        "latest_open" : latest_open
+        "event_types": event_types,
+        "sessions_list" : sessions_list,
+        "banner_event" : featured_event if featured_event else latest_open,
     }
-    return render(request, "event_list.html", {"context" : context})
+    return render(request, "event_list.html", context)
 
 def event_detail(request, event_slug):
     event = get_object_or_404(
