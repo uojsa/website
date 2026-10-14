@@ -28,7 +28,7 @@ def event_list(request):
     # Fetch the single latest open EventSession directly for an event
     latest_open = (
         EventSession.objects.filter(registration_deadline__gt=timezone.now())
-        .order_by("-date", "-id")
+        .order_by("date", "-id")
         .first()  # .first() is fine here because this is NOT inside Prefetch()
     )
 
