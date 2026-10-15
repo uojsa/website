@@ -18,7 +18,7 @@ def team(request):
 ## Event Views ##
 
 def event_list(request):
-    sessions = get_object_or_404(
+    sessions = (
         Event.objects.prefetch_related(
             Prefetch(
                 "sessions", queryset=EventSession.objects.order_by("-date", "-id")
