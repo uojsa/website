@@ -3,34 +3,71 @@
 {% block title %}Calendar{% endblock %}
 
 {% block content %}
+<!-- Full-Width Featured Event Banner (Replaces standard Header) -->
+{% if banner_event %}
+<header class="bg-slate-900 border-b border-slate-800 text-white relative overflow-hidden py-12 shadow-xl">
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-30 bg-[url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80')] bg-cover"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <span class="bg-pink-600 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded mb-4 inline-block tracking-wider">
+            {% if banner_event.featured %}Featured Event{% else %}Upcoming Event{% endif %}
+        </span>
+        <h1 class="text-4xl sm:text-3xl font-extrabold mb-3 text-white">{{ banner_event.name }}</h1>
+        <p class="text-slate-300 text-sm sm:text-base mb-4 italic">
+            {{ banner_event.date|date:"l, F j, Y" }} • {{ banner_event.start_time|time:"g:i A" }} - {{ banner_event.end_time|time:"g:i A" }}
+        </p>
+        <p class="text-slate-300 max-w-3xl text-sm sm:text-base leading-relaxed mb-6">
+            {{ banner_event.banner }}
+        </p>
+        <div class="flex flex-wrap gap-4">
+            {% if banner_event %}
+                <a href="{% url 'event_register' banner_event.id %}" 
+                   class="inline-block bg-pink-600 px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-pink-700 transition shadow-lg">
+                    Register Now
+                </a>
+            {% else %}
+                <button disabled class="bg-slate-800 text-slate-500 px-6 py-2.5 rounded-xl font-bold text-sm cursor-not-allowed">
+                    Registration Closed
+                </button>
+            {% endif %}
+            <a href="{% url 'event_detail' banner_event.event.slug %}" 
+               class="inline-block bg-white/10 backdrop-blur-sm px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-white/20 transition border border-white/10">
+                Learn More
+            </a>
+        </div>
+    </div>
+</header>
+{% else %}
+<!-- Fallback Header if no active featured/upcoming event exists -->
 <header class="bg-white border-b border-slate-200 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-4xl font-extrabold text-slate-900 mb-2">Events Calendar</h1>
         <p class="text-slate-500 text-lg">Stay up to date with our workshops, socials, and language circles.</p>
     </div>
 </header>
+{% endif %}
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="flex flex-col lg:flex-row gap-8">
         
+        <!-- Sidebar Filters -->
         <aside class="w-full lg:w-64 space-y-8">
             <div>
                 <h3 class="font-bold text-sm uppercase tracking-wider text-slate-400 mb-4">Filter by Type</h3>
                 <div class="space-y-2">
                     <label class="flex items-center gap-3 p-2 hover:bg-white rounded-lg cursor-pointer transition">
-                        <input type="checkbox" checked class="w-4 h-4 accent-pink-600">
+                        <input type="checkbox" id="filter-all" checked onchange="toggleAllFilters(this)" class="w-4 h-4 accent-pink-600">
                         <span class="text-sm font-medium">All Events</span>
                     </label>
                     <label class="flex items-center gap-3 p-2 hover:bg-white rounded-lg cursor-pointer transition">
-                        <input type="checkbox" class="w-4 h-4 accent-pink-600">
+                        <input type="checkbox" value="Cultural" checked onchange="applyFilters()" class="event-filter w-4 h-4 accent-pink-600">
                         <span class="text-sm font-medium text-pink-600">Cultural Events</span>
                     </label>
                     <label class="flex items-center gap-3 p-2 hover:bg-white rounded-lg cursor-pointer transition">
-                        <input type="checkbox" class="w-4 h-4 accent-pink-600">
+                        <input type="checkbox" value="JCG" checked onchange="applyFilters()" class="event-filter w-4 h-4 accent-pink-600">
                         <span class="text-sm font-medium text-blue-600">JCG Meetings</span>
                     </label>
                     <label class="flex items-center gap-3 p-2 hover:bg-white rounded-lg cursor-pointer transition">
-                        <input type="checkbox" class="w-4 h-4 accent-pink-600">
+                        <input type="checkbox" value="Workshop" checked onchange="applyFilters()" class="event-filter w-4 h-4 accent-pink-600">
                         <span class="text-sm font-medium text-purple-600">Workshops</span>
                     </label>
                 </div>
@@ -43,26 +80,33 @@
             </div>
         </aside>
 
+        <!-- Main Content Area -->
         <div class="flex-1">
-            
+            <!-- Controls Bar -->
             <div class="flex flex-wrap items-center justify-between mb-8 gap-4">
                 <div class="flex items-center gap-4">
-                    <h2 class="text-2xl font-bold text-slate-800">March 2026</h2>
+                    <h2 id="calendar-month-year" class="text-2xl font-bold text-slate-800">March 2026</h2>
                     <div class="flex bg-white border border-slate-200 rounded-lg overflow-hidden">
-                        <button class="p-2 hover:bg-slate-50 border-r border-slate-200"><i class="fa-solid fa-chevron-left"></i></button>
-                        <button class="p-2 hover:bg-slate-50"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button id="prev-month-btn" onclick="changeMonth(-1)" class="p-2 hover:bg-slate-50 border-r border-slate-200 disabled:opacity-40 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button id="next-month-btn" onclick="changeMonth(1)" class="p-2 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
                     </div>
-                    <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 transition">Today</button>
+                    <button onclick="resetToToday()" class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 transition">Today</button>
                 </div>
                 
+                <!-- View Switcher -->
                 <div class="flex bg-slate-200 p-1 rounded-xl">
-                    <button class="px-4 py-1.5 bg-white shadow-sm rounded-lg text-sm font-bold text-slate-900">Month</button>
-                    <button class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900">List</button>
+                    <button id="btn-month-view" onclick="switchView('month')" class="px-4 py-1.5 bg-white shadow-sm rounded-lg text-sm font-bold text-slate-900 transition">Month</button>
+                    <button id="btn-list-view" onclick="switchView('list')" class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 transition">List</button>
                 </div>
             </div>
 
-            <div class="hidden md:block bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
-                <div class="calendar-grid bg-slate-50 border-b border-slate-200">
+            <!-- 1. MONTH GRID VIEW -->
+            <div id="view-month" class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+                <div class="grid grid-cols-7 bg-slate-50 border-b border-slate-200">
                     <div class="p-4 text-center text-xs font-bold text-slate-400 uppercase tracking-widest">Sun</div>
                     <div class="p-4 text-center text-xs font-bold text-slate-400 uppercase tracking-widest">Mon</div>
                     <div class="p-4 text-center text-xs font-bold text-slate-400 uppercase tracking-widest">Tue</div>
@@ -72,91 +116,212 @@
                     <div class="p-4 text-center text-xs font-bold text-slate-400 uppercase tracking-widest">Sat</div>
                 </div>
                 
-                <div class="calendar-grid">
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100 text-slate-300">1</div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100 text-slate-300">2</div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100">
-                        <span class="text-sm font-semibold text-slate-400">3</span>
-                    </div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100 bg-blue-50/30">
-                        <span class="text-sm font-semibold text-slate-400">4</span>
-                        <div class="mt-2 p-1.5 bg-blue-600 text-white text-[10px] font-bold rounded shadow-sm cursor-pointer hover:bg-blue-700">JCG: Beginners</div>
-                    </div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100"><span class="text-sm font-semibold">5</span></div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100"><span class="text-sm font-semibold">6</span></div>
-                    <div class="min-h-[120px] p-2 border-b border-slate-100 bg-pink-50/30">
-                        <span class="text-sm font-semibold text-slate-400">7</span>
-                        <div class="mt-2 p-1.5 bg-pink-600 text-white text-[10px] font-bold rounded shadow-sm cursor-pointer hover:bg-pink-700">Movie Night</div>
-                    </div>
-
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100"><span class="text-sm font-semibold">8</span></div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100"><span class="text-sm font-semibold">9</span></div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100"><span class="text-sm font-semibold text-pink-600">10</span></div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100 bg-blue-50/30">
-                        <span class="text-sm font-semibold text-slate-400">11</span>
-                        <div class="mt-2 p-1.5 bg-blue-600 text-white text-[10px] font-bold rounded shadow-sm">JCG: Intermediate</div>
-                    </div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100 bg-purple-50/30">
-                        <span class="text-sm font-semibold text-slate-400">12</span>
-                        <div class="mt-2 p-1.5 bg-purple-600 text-white text-[10px] font-bold rounded shadow-sm">Sushi Workshop</div>
-                    </div>
-                    <div class="min-h-[120px] p-2 border-r border-b border-slate-100"><span class="text-sm font-semibold">13</span></div>
-                    <div class="min-h-[120px] p-2 border-b border-slate-100"><span class="text-sm font-semibold">14</span></div>
+                <div id="month-grid-days" class="grid grid-cols-7">
+                    <!-- Dynamic Month Cells Rendered via JS -->
                 </div>
             </div>
 
-            <div class="md:hidden space-y-4">
-                <div class="bg-white p-4 rounded-2xl border border-slate-200 flex gap-4 items-center">
-                    <div class="bg-pink-100 text-pink-600 w-14 h-14 rounded-xl flex flex-col items-center justify-center">
-                        <span class="text-xs font-bold uppercase">Mar</span>
-                        <span class="text-xl font-bold">07</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900">JSA Movie Night</h4>
-                        <p class="text-sm text-slate-500">7:00 PM • UCU Lounge</p>
-                    </div>
-                </div>
-                <div class="bg-white p-4 rounded-2xl border border-slate-200 flex gap-4 items-center">
-                    <div class="bg-blue-100 text-blue-600 w-14 h-14 rounded-xl flex flex-col items-center justify-center">
-                        <span class="text-xs font-bold uppercase">Mar</span>
-                        <span class="text-xl font-bold">11</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900">JCG: Intermediate</h4>
-                        <p class="text-sm text-slate-500">5:00 PM • MHN 204</p>
-                    </div>
+            <!-- 2. FOUR-COLUMN LIST VIEW -->
+            <div id="view-list" class="hidden bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                                <th class="p-4 sm:px-6">Event Name</th>
+                                <th class="p-4 sm:px-6">Date & Time</th>
+                                <th class="p-4 sm:px-6">Registration Deadline</th>
+                                <th class="p-4 sm:px-6">Event Type</th>
+                            </tr>
+                        </thead>
+                        <tbody id="list-table-body" class="divide-y divide-slate-100 text-sm">
+                            <!-- Dynamic Table Rows Rendered via JS -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            {% if context.latest_open %}
-            <div class="mt-12 bg-slate-900 rounded-3xl overflow-hidden p-8 text-white relative">
-                <div class="absolute top-0 right-0 w-1/2 h-full opacity-30 bg-[url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80')] bg-cover"></div>
-                <div class="relative z-10 max-w-lg">
-                    <span class="bg-pink-600 text-[10px] font-extrabold uppercase px-2 py-1 rounded mb-4 inline-block">{% if context.latest_open.featured %}Featured Event{% else %}Upcoming Event{% endif %}</span>
-                    <h3 class="text-3xl font-bold mb-4">{{ context.latest_open.name }}</h3>
-                    <p class="text-slate-300 mb-6 italic">{{ context.latest_open.date|date:"l, F j, Y"}} • {{ context.latest_open.start_time|time:"g:i A" }} - {{ context.latest_open.end_time|time:"g:i A" }}</p>
-                    <p class="text-slate-300 mb-8">{{ context.latest_open.banner }}</p>
-                    <div class="flex gap-4">
-    {% if context.latest_open %}
-        <a href="{% url 'event_register' context.latest_open.id %}" 
-           class="inline-block bg-pink-600 px-6 py-2 rounded-lg font-bold hover:bg-pink-700 transition">
-            Register
-        </a>
-    {% else %}
-        <button disabled 
-                class="bg-slate-800 text-slate-500 px-6 py-2 rounded-lg font-bold cursor-not-allowed">
-            Closed
-        </button>
-    {% endif %}
-                <a href="{% url 'event_detail' context.latest_open.event.slug %}" 
-                    class="inline-block bg-white/10 px-6 py-2 rounded-lg font-bold hover:bg-white/20 transition">
-                    Learn More
-                </a>
-            </div>
-                </div>
-            </div>
-            {% endif %}
-
         </div>
     </div>
 </main>
+
+<script>
+    // 1. Calendar State & Config (Base: March 2026)
+    const baseDate = new Date(2026, 2, 1); // March 2026
+    let currentDate = new Date(2026, 2, 1);
+    let monthOffset = 0; // Ranges from -4 to +4
+    const MAX_OFFSET = 4;
+    const MIN_OFFSET = -4;
+
+    // 2. Events Dataset
+    const eventsData = [
+        { id: 1, title: 'JCG: Beginners', date: '2026-03-04', time: '5:00 PM - 6:30 PM', location: 'MHN 204', type: 'JCG', deadline: '2026-03-03 11:59 PM', color: 'bg-blue-600 hover:bg-blue-700' },
+        { id: 2, title: 'JSA Movie Night', date: '2026-03-07', time: '7:00 PM - 10:00 PM', location: 'UCU Lounge', type: 'Cultural', deadline: '2026-03-06 5:00 PM', color: 'bg-pink-600 hover:bg-pink-700' },
+        { id: 3, title: 'JCG: Intermediate', date: '2026-03-11', time: '5:00 PM - 6:30 PM', location: 'MHN 204', type: 'JCG', deadline: '2026-03-10 11:59 PM', color: 'bg-blue-600 hover:bg-blue-700' },
+        { id: 4, title: 'Sushi Workshop', date: '2026-03-12', time: '6:00 PM - 8:30 PM', location: 'Kitchen Lab', type: 'Workshop', deadline: '2026-03-09 12:00 PM', color: 'bg-purple-600 hover:bg-purple-700' },
+        
+        // Future / Past Events within 4-month boundary
+        { id: 5, title: 'Origami & Tea Social', date: '2026-04-15', time: '4:00 PM - 6:00 PM', location: 'UCU 205', type: 'Cultural', deadline: '2026-04-14 11:59 PM', color: 'bg-pink-600 hover:bg-pink-700' },
+        { id: 6, title: 'JLPT Prep Workshop', date: '2026-05-10', time: '2:00 PM - 4:00 PM', location: 'Online (Zoom)', type: 'Workshop', deadline: '2026-05-09 11:59 PM', color: 'bg-purple-600 hover:bg-purple-700' },
+        { id: 7, title: 'Winter Welcome Party', date: '2026-01-18', time: '6:00 PM - 9:00 PM', location: 'Main Hall', type: 'Cultural', deadline: '2026-01-16 11:59 PM', color: 'bg-pink-600 hover:bg-pink-700' }
+    ];
+
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // 3. Navigation Controls
+    function changeMonth(delta) {
+        if (monthOffset + delta < MIN_OFFSET || monthOffset + delta > MAX_OFFSET) return;
+        monthOffset += delta;
+        currentDate.setMonth(currentDate.getMonth() + delta);
+        renderCalendar();
+    }
+
+    function resetToToday() {
+        monthOffset = 0;
+        currentDate = new Date(2026, 2, 1);
+        renderCalendar();
+    }
+
+    function updateNavButtons() {
+        document.getElementById('prev-month-btn').disabled = monthOffset <= MIN_OFFSET;
+        document.getElementById('next-month-btn').disabled = monthOffset >= MAX_OFFSET;
+    }
+
+    // 4. View Switcher Logic
+    function switchView(view) {
+        const monthView = document.getElementById('view-month');
+        const listView = document.getElementById('view-list');
+        const btnMonth = document.getElementById('btn-month-view');
+        const btnList = document.getElementById('btn-list-view');
+
+        if (view === 'month') {
+            monthView.classList.remove('hidden');
+            listView.classList.add('hidden');
+            btnMonth.className = "px-4 py-1.5 bg-white shadow-sm rounded-lg text-sm font-bold text-slate-900 transition";
+            btnList.className = "px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 transition";
+        } else {
+            monthView.classList.add('hidden');
+            listView.classList.remove('hidden');
+            btnList.className = "px-4 py-1.5 bg-white shadow-sm rounded-lg text-sm font-bold text-slate-900 transition";
+            btnMonth.className = "px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 transition";
+        }
+    }
+
+    // 5. Filter Logic
+    function getActiveTypes() {
+        const checkboxes = document.querySelectorAll('.event-filter:checked');
+        return Array.from(checkboxes).map(cb => cb.value);
+    }
+
+    function toggleAllFilters(master) {
+        document.querySelectorAll('.event-filter').forEach(cb => cb.checked = master.checked);
+        renderCalendar();
+    }
+
+    function applyFilters() {
+        const allCheckbox = document.getElementById('filter-all');
+        const total = document.querySelectorAll('.event-filter').length;
+        const checked = document.querySelectorAll('.event-filter:checked').length;
+        
+        allCheckbox.checked = (total === checked);
+        renderCalendar();
+    }
+
+    // 6. Rendering Logic
+    function renderCalendar() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+
+        // Header Title
+        document.getElementById('calendar-month-year').textContent = `${monthNames[month]} ${year}`;
+        updateNavButtons();
+
+        const activeTypes = getActiveTypes();
+        const filteredEvents = eventsData.filter(e => activeTypes.includes(e.type));
+
+        // RENDER MONTH GRID
+        const gridContainer = document.getElementById('month-grid-days');
+        gridContainer.innerHTML = '';
+
+        const firstDayIndex = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const prevMonthDays = new Date(year, month, 0).getDate();
+
+        // Previous month padding cells
+        for (let i = firstDayIndex; i > 0; i--) {
+            gridContainer.innerHTML += `
+                <div class="min-h-[120px] p-2 border-r border-b border-slate-100 text-slate-300 bg-slate-50/50">
+                    <span class="text-sm">${prevMonthDays - i + 1}</span>
+                </div>`;
+        }
+
+        // Current month cells
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const dayEvents = filteredEvents.filter(e => e.date === dateStr);
+            const isToday = (day === 10 && month === 2 && year === 2026); // Mar 10 Highlight
+
+            let eventsHTML = dayEvents.map(e => `
+                <div class="mt-1 p-1.5 ${e.color} text-white text-[10px] font-bold rounded shadow-sm cursor-pointer truncate" title="${e.title} (${e.time})">
+                    ${e.title}
+                </div>
+            `).join('');
+
+            gridContainer.innerHTML += `
+                <div class="min-h-[120px] p-2 border-r border-b border-slate-100 ${dayEvents.length ? 'bg-pink-50/20' : ''}">
+                    <span class="text-sm font-semibold ${isToday ? 'text-pink-600 font-extrabold' : 'text-slate-700'}">${day}</span>
+                    ${eventsHTML}
+                </div>`;
+        }
+
+        // RENDER 4-COLUMN LIST VIEW
+        const listContainer = document.getElementById('list-table-body');
+        listContainer.innerHTML = '';
+
+        // Filter events for active month
+        const monthEvents = filteredEvents.filter(e => {
+            const d = new Date(e.date + 'T00:00:00');
+            return d.getFullYear() === year && d.getMonth() === month;
+        });
+
+        if (monthEvents.length === 0) {
+            listContainer.innerHTML = `
+                <tr>
+                    <td colspan="4" class="p-8 text-center text-slate-400 italic">No events scheduled for ${monthNames[month]} ${year}.</td>
+                </tr>`;
+        } else {
+            monthEvents.forEach(e => {
+                const formattedDate = new Date(e.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                let typeBadge = '';
+                
+                if (e.type === 'Cultural') typeBadge = '<span class="bg-pink-100 text-pink-700 px-2.5 py-1 rounded-full text-xs font-bold inline-block">Cultural Event</span>';
+                else if (e.type === 'JCG') typeBadge = '<span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full text-xs font-bold inline-block">JCG Meeting</span>';
+                else typeBadge = '<span class="bg-purple-100 text-purple-700 px-2.5 py-1 rounded-full text-xs font-bold inline-block">Workshop</span>';
+
+                listContainer.innerHTML += `
+                    <tr class="hover:bg-slate-50 transition">
+                        <!-- Column 1: Event Name -->
+                        <td class="p-4 sm:px-6 font-bold text-slate-900">
+                            ${e.title}
+                            <div class="text-xs font-normal text-slate-400 sm:hidden">${e.location}</div>
+                        </td>
+                        <!-- Column 2: Date & Time -->
+                        <td class="p-4 sm:px-6 text-slate-600">
+                            <div class="font-semibold text-slate-800">${formattedDate}</div>
+                            <div class="text-xs text-slate-500">${e.time} • ${e.location}</div>
+                        </td>
+                        <!-- Column 3: Registration Deadline -->
+                        <td class="p-4 sm:px-6 text-slate-600">
+                            <span class="font-medium text-slate-700">${e.deadline}</span>
+                        </td>
+                        <!-- Column 4: Event Type -->
+                        <td class="p-4 sm:px-6">
+                            ${typeBadge}
+                        </td>
+                    </tr>`;
+            });
+        }
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', renderCalendar);
+</script>
 {% endblock %}

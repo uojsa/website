@@ -18,7 +18,7 @@ def team(request):
 ## Event Views ##
 
 def event_list(request):
-    sessions = get_object_or_404(
+    sessions = (
         Event.objects.prefetch_related(
             Prefetch(
                 "sessions", queryset=EventSession.objects.order_by("-date", "-id")
@@ -28,15 +28,25 @@ def event_list(request):
     # Fetch the single latest open EventSession directly for an event
     latest_open = (
         EventSession.objects.filter(registration_deadline__gt=timezone.now())
-        .order_by("-date", "-id")
+        .order_by("date", "-id")
+        .first()  # .first() is fine here because this is NOT inside Prefetch()
+    )
+
+    # Fetch the first featured event
+    featured_event = (
+        EventSession.objects.filter(
+            registration_deadline__gt=timezone.now(),
+            featured=True,
+        )
+        .order_by("date", "-id")
         .first()  # .first() is fine here because this is NOT inside Prefetch()
     )
 
     context = {
         "sessions" : sessions,
-        "latest_open" : latest_open
+        "banner_event" : featured_event if featured_event else latest_open,
     }
-    return render(request, "event_list.html", {"context" : context})
+    return render(request, "event_list.html", context)
 
 def event_detail(request, event_slug):
     event = get_object_or_404(

@@ -1,11 +1,12 @@
+{% load static %}
+
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <a href="{% url 'home' %}">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl">J</div>
-                <span class="font-bold text-xl tracking-tight">JSA <span class="text-pink-600">uOttawa</span></span>
-            </div>
+                <img src="{% static 'images/jsa-horizontal.png' %}" 
+               alt="JSA Logo" 
+               class="h-8 sm:h-10 w-auto object-contain">
            </a> 
             <div class="hidden md:flex md:items-baseline space-x-8 font-medium text-sm">
                 {% url 'home' as home_url %}
