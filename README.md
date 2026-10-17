@@ -58,7 +58,11 @@ git checkout issue-1
 ```
 python manage.py migrate
 ```
-7. Run the development server and test the changes
+6. Then load the saved JSON to see actual new entries in the databse (See How to Run with Save Changes)
+```
+python manage.py loaddata datadump.json
+```
+8. Run the development server and test the code changes
 ```
 python manage.py runserver
 ```
