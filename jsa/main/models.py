@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 
+
 class IconChoices(models.TextChoices):
     INFO = "info", "Info / Note"
     QUESTION = "question", "Question / What is?"
@@ -15,6 +16,7 @@ class IconChoices(models.TextChoices):
     STAR = "star", "Star / Featured"
     MEETUP = "users", "People / Gathering"
     NONE = "none", "None"
+
 
 # ==========================================
 # 1. EXEC ROLES (Managed by Superusers)
@@ -42,9 +44,7 @@ class ExecRole(models.Model):
 # 2. USER PROFILE
 # ==========================================
 class UserProfile(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="profile"
-    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     role = models.ForeignKey(
         ExecRole,
         on_delete=models.SET_NULL,
@@ -68,29 +68,53 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.get_or_create(user=instance)
         instance.profile.save()
 
+
 # ==========================================
 # 3. SPONSORS
 # ==========================================
 class Sponsor(models.Model):
-    name = models.CharField(
-        max_length=100,
-        null=False
-    )
+    name = models.CharField(max_length=100, null=False)
     logo = models.ImageField(upload_to="sponsor_logos/", blank=True, null=True)
     website = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.name
 
+
 # ==========================================
 # 4. EVENTS
 # ==========================================
 class Event(models.Model):
+    EVENT_TYPES_CONFIG = {
+        "CULTURE": {
+            "label": "Culture",
+            "colour": "pink",
+        },
+        "LANGUAGE": {
+            "label": "Language",
+            "colour": "blue",
+        },
+        "COMMUNITY": {
+            "label": "Community",
+            "colour": "emerald",
+        },
+        "WORKSHOP": {
+            "label": "Workshop",
+            "colour": "purple",
+        },
+        "FESTIVAL": {
+            "label": "Festival",
+            "colour": "amber",
+        },
+        "OTHER": {
+            "label": "Other",
+            "colour": "slate",  # (i.e., grey)
+        },
+    }
+
+    # Creates list of [("CULTURE", "Culture"), ...] for Django models
     EVENT_TYPE_CHOICES = [
-        ("CULTURE", "Culture"),
-        ("LANGUAGE", "Language"),
-        ("COMMUNITY", "Community"),
-        ("FESTIVAL", "Festival"),
+        (key, data["label"]) for key, data in EVENT_TYPES_CONFIG.items()
     ]
 
     class DayOfWeek(models.IntegerChoices):
@@ -109,26 +133,20 @@ class Event(models.Model):
         EVERY_SEM = 4, "Every Semester"
         EVERY_FALL = 5, "Every Fall Semester"
         EVERY_WINTER = 6, "Every Winter Semester"
-        EVERY_SUM = 7, "Every Summer Semester" 
+        EVERY_SUM = 7, "Every Summer Semester"
         YEARLY = 8, "Every Year"
         ONCE = 9, "One-off"
 
-    name = models.CharField(
-        max_length=200,
-        null=False
-    )
+    name = models.CharField(max_length=200, null=False)
     slug = models.SlugField(
         unique=True,
         help_text="URL string (e.g., japanese-conversation-group)",
-    ) 
+    )
     banner = models.TextField(
-        null=False,
-        help_text="Event description that will appear in banner."
+        null=False, help_text="Event description that will appear in banner."
     )
     event_type = models.CharField(
-        max_length=20, 
-        choices=EVENT_TYPE_CHOICES,
-        default="CULTURE"
+        max_length=20, choices=EVENT_TYPE_CHOICES, default="CULTURE"
     )
     day_of_week = models.PositiveSmallIntegerField(
         choices=DayOfWeek.choices,
@@ -140,11 +158,11 @@ class Event(models.Model):
         choices=Frequency.choices,
         default=Frequency.EVERY_WEEK,
         null=False,
-        help_text="Determines formatting in event page right-side detail card." 
+        help_text="Determines formatting in event page right-side detail card.",
     )
     start_time = models.TimeField(
         blank=True,
-        null=True, 
+        null=True,
         help_text="Optional. Leave blank if the exact time is TBD.",
     )
     end_time = models.TimeField(
@@ -156,24 +174,20 @@ class Event(models.Model):
         max_length=50,
         default="STEM Complex",
         blank=True,
-        help_text="Optional. Leave blank if the exact location is TBD."
+        help_text="Optional. Leave blank if the exact location is TBD.",
     )
     room = models.CharField(
         max_length=50,
         default="STEM 404",
         blank=True,
-        help_text="Optional. Leave blank if room is TBD."
+        help_text="Optional. Leave blank if room is TBD.",
     )
     note = models.CharField(
         max_length=40,
         default="See you there!",
-        help_text="'Note' field in event main page."
+        help_text="'Note' field in event main page.",
     )
-    sponsors = models.ManyToManyField(
-        Sponsor,
-        blank=True,
-        related_name="events"
-    )
+    sponsors = models.ManyToManyField(Sponsor, blank=True, related_name="events")
     created_by = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
@@ -211,6 +225,7 @@ class Event(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+
 # ==========================================
 # Event Page UI Container
 # ==========================================
@@ -220,8 +235,8 @@ class Container(models.Model):
         null=True,
         blank=True,
         on_delete=models.CASCADE,
-        related_name="containers"
-    )   
+        related_name="containers",
+    )
     icon = models.CharField(
         max_length=20,
         choices=IconChoices.choices,
@@ -229,24 +244,19 @@ class Container(models.Model):
         help_text="Select an icon to display on event cards and banners.",
     )
     header = models.CharField(max_length=100)
-    text = models.TextField(
-        null=False
-    )
+    text = models.TextField(null=False)
 
     def __str__(self):
         return self.header
 
+
 class EventSession(models.Model):
-    event = models.ForeignKey(
-        Event, on_delete=models.CASCADE, related_name="sessions"
-    )
-    name = models.CharField(
-        max_length=50, default="Session"
-    )   
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="sessions")
+    name = models.CharField(max_length=50, default="Session")
     banner = models.TextField(
-        blank=True,
-        help_text="Optional. If empty, will default to parent event banner."
+        blank=True, help_text="Optional. If empty, will default to parent event banner."
     )
+
     class Meta:
         # Singular title (used on detail pages, object deletion forms, etc.)
         verbose_name = "Session"
@@ -260,42 +270,36 @@ class EventSession(models.Model):
     registration_deadline = models.DateTimeField(
         null=True,
         blank=True,
-        help_text="Event register button marked as  'Not Available Yet' after deadline. Leave empty for Drop-in / Walk-in events."
+        help_text="Event register button marked as  'Not Available Yet' after deadline. Leave empty for Drop-in / Walk-in events.",
     )
     location = models.CharField(
-        max_length=50,
-        help_text="Building / Park. (e.g., STEM Complex)"
+        max_length=50, help_text="Building / Park. (e.g., STEM Complex)"
     )
     room = models.CharField(
-        max_length=50,
-        blank=True,
-        help_text="Optional. (e.g., STEM 404)"
+        max_length=50, blank=True, help_text="Optional. (e.g., STEM 404)"
     )
     signup_link = models.URLField(
         max_length=500,
         blank=True,
         null=True,
-        help_text="Optional. Leave empty for Drop-in / Walk-in events." 
+        help_text="Optional. Leave empty for Drop-in / Walk-in events.",
     )
-    poster_image = models.ImageField(
-        upload_to="event_posters/", blank=True, null=True
-    )
+    poster_image = models.ImageField(upload_to="event_posters/", blank=True, null=True)
     cost = models.DecimalField(
         max_digits=2,
         decimal_places=2,
         default=0.00,
-        help_text="Leave as 0.00 to label as Free."
+        help_text="Leave as 0.00 to label as Free.",
     )
     capacity = models.PositiveIntegerField(
-        default=30,
-        help_text="Leave as 0 for sessions  with no capacity restriction."
+        default=30, help_text="Leave as 0 for sessions  with no capacity restriction."
     )
     featured = models.BooleanField(
         default=False,
         db_index=True,
-        help_text="Check this box to highlight this session on the home page or in the calendar banner."
+        help_text="Check this box to highlight this session on the home page or in the calendar banner.",
     )
-     
+
     # analytics
     created_at = models.DateTimeField(auto_now_add=True)
     last_edited_at = models.DateTimeField(auto_now=True)
@@ -333,26 +337,23 @@ class EventSession(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+
 class Card(models.Model):
     container = models.ForeignKey(
-        Container,
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name="cards"
+        Container, null=True, blank=True, on_delete=models.CASCADE, related_name="cards"
     )
     event_session = models.ForeignKey(
         EventSession,
         null=True,
         blank=True,
         on_delete=models.CASCADE,
-        related_name="notes"
+        related_name="notes",
     )
     icon = models.CharField(
         max_length=20,
         choices=IconChoices.choices,
         default=IconChoices.CALENDAR,
-        help_text="Select an icon to display to the left of the text."
+        help_text="Select an icon to display to the left of the text.",
     )
     header = models.CharField(default="Header Text")
     text = models.TextField(default="Loren Ipsum")
@@ -360,24 +361,21 @@ class Card(models.Model):
     def __str__(self):
         return self.header
 
+
 class Album(models.Model):
     session = models.ForeignKey(
         EventSession, on_delete=models.CASCADE, related_name="sessions"
-    ) 
-    semester_slug = models.SlugField(max_length=20, blank=True)
-    event_slug = models.SlugField(
-        max_length=50,
-        blank=True
     )
-    description = models.TextField() 
-    num_attendees =  models.PositiveIntegerField(
+    semester_slug = models.SlugField(max_length=20, blank=True)
+    event_slug = models.SlugField(max_length=50, blank=True)
+    description = models.TextField()
+    num_attendees = models.PositiveIntegerField(
         default=30,
-        help_text="If no exact value, put an estimate to display in Photo Gallery page."
-    ) 
+        help_text="If no exact value, put an estimate to display in Photo Gallery page.",
+    )
     tag_name = models.CharField(
-        max_length=50,
-        help_text="Custom text label that goes above album card."
-    ) 
+        max_length=50, help_text="Custom text label that goes above album card."
+    )
     additional_info_icon = models.CharField(
         max_length=20,
         choices=IconChoices.choices,
@@ -387,8 +385,8 @@ class Album(models.Model):
     additional_info = models.CharField(
         max_length=50,
         blank=True,
-        help_text="Custom label next to icon. Leave blank to use Location." 
-    ) 
+        help_text="Custom label next to icon. Leave blank to use Location.",
+    )
     created_by = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
@@ -396,17 +394,17 @@ class Album(models.Model):
         blank=True,
         editable=False,
         related_name="albums_created",
-    )   
+    )
     last_edited_by = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
         editable=False,
-        related_name="albums_edited", 
+        related_name="albums_edited",
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    last_edited_at = models.DateTimeField(auto_now=True) 
+    last_edited_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
         # Ensure session relationship is available
@@ -421,7 +419,7 @@ class Album(models.Model):
                     season = "winter"
                 else:
                     season = "summer"
-                
+
                 # Fixed typo: semester_slug
                 self.semester_slug = f"{season}"
 
@@ -434,14 +432,13 @@ class Album(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Album for {self.session.name}" 
+        return f"Album for {self.session.name}"
+
 
 class Photo(models.Model):
-    album = models.ForeignKey(
-        Album, on_delete=models.CASCADE, related_name="photos"
-    )
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name="photos")
     # Pillow handles image validation when saving this field
-    file  = models.ImageField(upload_to="albums/photos/%Y/%m/%d/")
+    file = models.ImageField(upload_to="albums/photos/%Y/%m/%d/")
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

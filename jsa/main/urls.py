@@ -14,7 +14,7 @@ urlpatterns = [
     #  1. The Events Calendar page / List of all upcoming events
     #  2. The individual event sign up page (Date, time, location, etc.)
     #  3. The event general detail page (What it"s about, frequency, etc.)
-    path("events/calendar/", views.event_list, name="event_list"),
+    path("events/calendar/", views.session_list, name="session_list"),
     path("events/<int:id>/register/", views.event_register, name="event_register"),
     path("events/<slug:event_slug>/", views.event_detail, name="event_detail"),
 
